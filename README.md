@@ -13,7 +13,9 @@ npm ci
 npm run dev
 ```
 
-Workout drafts and completed sessions are stored per Janus account in the browser with `localStorage`. Set `VITE_JANUS_API_URL` to override the production Janus API URL during local API development.
+Workout drafts are stored per Janus account in the browser with `localStorage`. Completed sessions are saved through Janus in the authenticated user's Firestore `workout_history` subcollection and cached locally for display. Existing browser-only history is uploaded once when workout sync first becomes available. Set `VITE_JANUS_API_URL` to override the production Janus API URL during local API development.
+
+Deploy the Janus workout endpoints before deploying this Aether version. Until Janus exposes `/api/workouts`, Aether keeps existing cached history visible but will not clear a completed workout draft or claim that the session was saved.
 
 In development, the login screen also offers an isolated demo account preloaded with sample workout history and a partially completed session. Demo credentials, controls, and fixtures are excluded from production bundles and do not write to Janus or Firestore.
 

@@ -11,6 +11,7 @@ export const API_ENDPOINTS = {
   AUTH_DELETE_ACCOUNT: '/api/auth/account',
   AI_SETTINGS: '/api/user/ai-settings',
   AI_CREDENTIALS: '/api/user/ai-credentials',
+  WORKOUTS: '/api/workouts',
 }
 
 const TOKEN_KEY = 'dg_auth_token'

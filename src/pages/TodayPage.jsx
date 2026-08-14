@@ -4,7 +4,14 @@ import Icon from '../components/Icon.jsx'
 import { dumbbellWeights, workoutItems } from '../data/workouts.js'
 import { formatDate } from '../utils/date.js'
 
-export default function TodayPage({ workout, draft, updateDraft, onFinish, onViewPlan }) {
+export default function TodayPage({
+  workout,
+  draft,
+  updateDraft,
+  onFinish,
+  finishing,
+  onViewPlan,
+}) {
   const [now, setNow] = useState(() => Date.now())
   const items = workoutItems(workout)
   const completeCount = items.filter((item) => draft.entries[item.id]?.done).length
@@ -151,6 +158,7 @@ export default function TodayPage({ workout, draft, updateDraft, onFinish, onVie
                           <input
                             value={entry.result ?? ''}
                             onChange={(event) => updateEntry(item.id, { result: event.target.value })}
+                            maxLength="200"
                             placeholder={item.kind === 'cardio' ? 'Optional' : 'e.g. 10, 10, 9'}
                           />
                         </label>
@@ -167,6 +175,7 @@ export default function TodayPage({ workout, draft, updateDraft, onFinish, onVie
           <span>Session note</span>
           <textarea
             rows="3"
+            maxLength="4000"
             value={draft.note}
             onChange={(event) => updateDraft((current) => ({
               ...current,
@@ -182,9 +191,9 @@ export default function TodayPage({ workout, draft, updateDraft, onFinish, onVie
             className="primary-button"
             type="button"
             onClick={onFinish}
-            disabled={!draft.startedAt || completeCount === 0}
+            disabled={!draft.startedAt || completeCount === 0 || finishing}
           >
-            Finish session <Icon name="check" size={18} />
+            {finishing ? 'Saving to Janus…' : 'Finish session'} <Icon name="check" size={18} />
           </button>
         </footer>
       </section>
