@@ -1,8 +1,8 @@
 import Icon from './Icon.jsx'
 
 const items = [
-  { id: 'today', label: 'Today', icon: 'today' },
   { id: 'plan', label: 'Plan', icon: 'plan' },
+  { id: 'today', label: 'Today', icon: 'today' },
   { id: 'history', label: 'History', icon: 'history' },
   { id: 'account', label: 'Account', icon: 'account' },
 ]
