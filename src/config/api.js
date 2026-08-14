@@ -8,6 +8,9 @@ export const API_ENDPOINTS = {
   AUTH_REGISTER: '/api/auth/register',
   AUTH_LOGIN: '/api/auth/login',
   AUTH_ME: '/api/auth/me',
+  AUTH_DELETE_ACCOUNT: '/api/auth/account',
+  AI_SETTINGS: '/api/user/ai-settings',
+  AI_CREDENTIALS: '/api/user/ai-credentials',
 }
 
 const TOKEN_KEY = 'dg_auth_token'

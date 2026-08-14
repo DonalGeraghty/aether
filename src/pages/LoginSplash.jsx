@@ -3,7 +3,7 @@ import Icon from '../components/Icon.jsx'
 import { useAuth } from '../context/AuthContext.jsx'
 
 export default function LoginSplash() {
-  const { login, register } = useAuth()
+  const { login, loginAsDemo, register } = useAuth()
   const [mode, setMode] = useState('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -61,6 +61,13 @@ export default function LoginSplash() {
             <button type="button" role="tab" aria-selected={mode === 'login'} onClick={() => selectMode('login')}>Sign in</button>
             <button type="button" role="tab" aria-selected={mode === 'register'} onClick={() => selectMode('register')}>Create account</button>
           </div>
+
+          {import.meta.env.DEV && (
+            <button className="demo-login-button" type="button" onClick={loginAsDemo}>
+              <span><strong>Explore demo</strong><small>Preloaded training data · no account needed</small></span>
+              <Icon name="arrow" size={18} />
+            </button>
+          )}
 
           <form className="auth-form" onSubmit={handleSubmit}>
             <label>

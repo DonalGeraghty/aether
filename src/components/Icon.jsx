@@ -9,6 +9,7 @@ export default function Icon({ name, size = 20 }) {
     dumbbell: <path d="M6 7v10M3 9v6M18 7v10M21 9v6M6 12h12"/>,
     close: <path d="m6 6 12 12M18 6 6 18"/>,
     logout: <><path d="M10 5H5v14h5M14 8l4 4-4 4M18 12H9"/></>,
+    account: <><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-4 3.1-6 7-6s6.2 2 7 6"/></>,
   }
 
   return (

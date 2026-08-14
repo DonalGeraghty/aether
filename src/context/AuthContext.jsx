@@ -16,6 +16,12 @@ import {
 
 const AuthContext = createContext(null)
 const PROFILE_KEY = 'aether_auth_profile'
+const DEMO_TOKEN = 'local-aether-demo-session'
+const DEMO_USER = {
+  email: 'demo@aether.local',
+  accountId: 'local-demo-account',
+  isDemo: true,
+}
 
 function getStoredProfile() {
   try {
@@ -63,6 +69,12 @@ export function AuthProvider({ children }) {
 
   const bootstrap = useCallback(async () => {
     const token = getStoredToken()
+    if (import.meta.env.DEV && token === DEMO_TOKEN) {
+      setUser(DEMO_USER)
+      setSessionState('verified')
+      setLoading(false)
+      return
+    }
     if (!token) {
       setUser(null)
       setSessionState('anonymous')
@@ -129,15 +141,34 @@ export function AuthProvider({ children }) {
     [authenticate],
   )
 
+  const deleteAccount = useCallback(async (password) => {
+    if (!user?.email || user?.isDemo) throw new Error('Account deletion is unavailable')
+    const response = await authFetch(API_ENDPOINTS.AUTH_DELETE_ACCOUNT, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password }),
+    })
+    const data = await response.json().catch(() => ({}))
+    if (!response.ok) throw new Error(data.error || 'Could not delete account')
+    logout()
+  }, [logout, user?.email, user?.isDemo])
+
+  const loginAsDemo = useCallback(() => {
+    if (!import.meta.env.DEV) return
+    applySession(DEMO_USER, DEMO_TOKEN)
+  }, [applySession])
+
   const value = useMemo(() => ({
     user,
     loading,
     sessionState,
     login,
+    loginAsDemo,
     register,
     logout,
+    deleteAccount,
     refreshSession: bootstrap,
-  }), [user, loading, sessionState, login, register, logout, bootstrap])
+  }), [user, loading, sessionState, login, loginAsDemo, register, logout, deleteAccount, bootstrap])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

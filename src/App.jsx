@@ -3,6 +3,8 @@ import Dock from './components/Dock.jsx'
 import Icon from './components/Icon.jsx'
 import { useAuth } from './context/AuthContext.jsx'
 import LoginSplash from './pages/LoginSplash.jsx'
+import AccountPage from './pages/AccountPage.jsx'
+import { createDemoDrafts, createDemoHistory } from './data/demoData.js'
 import {
   dumbbellWeights,
   equipment,
@@ -14,12 +16,12 @@ import {
 const HISTORY_KEY = 'aether-workout-history'
 const DRAFT_KEY = 'aether-workout-drafts'
 
-const readAccountStorage = (accountKey, legacyKey, fallback) => {
+const readAccountStorage = (accountKey, legacyKey, fallback, migrateLegacy = true) => {
   try {
     const accountValue = localStorage.getItem(accountKey)
     if (accountValue) return JSON.parse(accountValue)
 
-    const legacyValue = localStorage.getItem(legacyKey)
+    const legacyValue = migrateLegacy ? localStorage.getItem(legacyKey) : null
     if (!legacyValue) return fallback
     localStorage.setItem(accountKey, legacyValue)
     localStorage.removeItem(legacyKey)
@@ -39,8 +41,18 @@ function WorkoutApp({ user, logout }) {
   const draftKey = `${DRAFT_KEY}:${user.accountId}`
   const [page, setPage] = useState('today')
   const [selectedId, setSelectedId] = useState(scheduled.id)
-  const [drafts, setDrafts] = useState(() => readAccountStorage(draftKey, DRAFT_KEY, {}))
-  const [history, setHistory] = useState(() => readAccountStorage(historyKey, HISTORY_KEY, []))
+  const [drafts, setDrafts] = useState(() => readAccountStorage(
+    draftKey,
+    DRAFT_KEY,
+    user.isDemo ? createDemoDrafts(scheduled.id) : {},
+    !user.isDemo,
+  ))
+  const [history, setHistory] = useState(() => readAccountStorage(
+    historyKey,
+    HISTORY_KEY,
+    user.isDemo ? createDemoHistory() : [],
+    !user.isDemo,
+  ))
 
   useEffect(() => localStorage.setItem(draftKey, JSON.stringify(drafts)), [draftKey, drafts])
   useEffect(() => localStorage.setItem(historyKey, JSON.stringify(history)), [historyKey, history])
@@ -110,6 +122,7 @@ function WorkoutApp({ user, logout }) {
       )}
       {page === 'plan' && <PlanPage selectedId={selectedId} onChoose={chooseWorkout} />}
       {page === 'history' && <HistoryPage history={history} onTrain={() => setPage('today')} />}
+      {page === 'account' && <AccountPage onBack={() => setPage('today')} />}
 
       <Dock page={page} onChange={setPage} onLogout={logout} />
     </div>

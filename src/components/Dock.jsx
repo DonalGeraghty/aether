@@ -4,6 +4,7 @@ const items = [
   { id: 'today', label: 'Today', icon: 'today' },
   { id: 'plan', label: 'Plan', icon: 'plan' },
   { id: 'history', label: 'History', icon: 'history' },
+  { id: 'account', label: 'Account', icon: 'account' },
 ]
 
 export default function Dock({ page, onChange, onLogout }) {
