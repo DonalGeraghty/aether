@@ -27,7 +27,7 @@ for (const marker of forbiddenProductionText) {
 }
 
 const assetBudgets = new Map([
-  ['favicon-32.png', 100_000],
+  ['aether-favicon-32-v2.png', 100_000],
   ['apple-touch-icon.png', 300_000],
   ['aether-icon-128.webp', 200_000],
   ['aether-192.png', 300_000],
