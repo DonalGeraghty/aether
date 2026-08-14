@@ -169,6 +169,20 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .history-card-main p { margin: .4rem 0 0; color: var(--muted); font-size: .75rem; }
 .history-card-result { display: grid; justify-items: end; gap: .2rem; }
 .history-card-result strong { font-family: 'DM Mono', monospace; font-size: 1.1rem; font-weight: 400; }
+.history-card-actions { display: flex; gap: .55rem; margin-top: .45rem; }
+.history-card-actions button, .history-edit-actions button { padding: 0; border: 0; color: var(--muted); background: transparent; font-size: .65rem; cursor: pointer; }
+.history-card-actions button:hover, .history-edit-actions button:hover { color: var(--text); }
+.history-card-actions button:last-child { color: #a86d6d; }
+.history-card-actions button:disabled, .history-edit-actions button:disabled { opacity: .5; cursor: wait; }
+.history-card.is-editing { padding-bottom: 1rem; }
+.history-edit-form { display: grid; grid-column: 1 / -1; grid-template-columns: 1.4fr .7fr .8fr; gap: 1rem; margin-top: .25rem; padding: 1.2rem; border: 1px solid var(--line); border-radius: .7rem; background: #070707; }
+.history-edit-form label { display: grid; gap: .4rem; color: var(--muted); font-size: .65rem; }
+.history-edit-form input, .history-edit-form textarea { width: 100%; padding: .65rem; border: 1px solid #292929; border-radius: .45rem; color: var(--text); background: #050505; }
+.history-edit-note { grid-column: 1 / -1; }
+.history-edit-note textarea { resize: vertical; }
+.history-edit-actions { display: flex; grid-column: 1 / -1; justify-content: flex-end; gap: 1rem; }
+.history-edit-actions button:last-child { color: var(--text); }
+.history-message { margin-bottom: 1rem; }
 
 .account-page { padding-top: 1.25rem; }
 .account-hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 3rem; padding: clamp(5rem, 13vh, 8rem) 0 4rem; }
@@ -299,6 +313,8 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
   .history-stats { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; }
   .history-stats > div { min-width: 0; }
   .history-card { grid-template-columns: 3.5rem minmax(0, 1fr) auto; gap: .8rem; }
+  .history-edit-form { grid-template-columns: 1fr; }
+  .history-edit-note, .history-edit-actions { grid-column: 1; }
   .account-hero { display: grid; gap: 2rem; padding-block: 4.5rem 3rem; }
   .account-identity { justify-items: start; padding: 0; }
   .demo-account-note { margin-top: -1rem; }

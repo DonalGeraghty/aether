@@ -5,6 +5,7 @@ import {
   clearAccountWorkoutData,
   DRAFT_KEY,
   HISTORY_KEY,
+  HISTORY_MIGRATION_KEY,
   readAccountStorage,
   writeAccountStorage,
 } from '../src/services/workoutStorage.js'
@@ -56,14 +57,17 @@ test('clearAccountWorkoutData removes only the selected account workout keys', (
   const firstHistory = accountStorageKey(HISTORY_KEY, 'account-1')
   const firstDraft = accountStorageKey(DRAFT_KEY, 'account-1')
   const secondHistory = accountStorageKey(HISTORY_KEY, 'account-2')
+  const firstMigration = accountStorageKey(HISTORY_MIGRATION_KEY, 'account-1')
   const storage = memoryStorage({
     [firstHistory]: '[]',
     [firstDraft]: '{}',
+    [firstMigration]: 'complete',
     [secondHistory]: '[{"id":"keep"}]',
   })
 
   assert.equal(clearAccountWorkoutData('account-1', storage), true)
   assert.equal(storage.getItem(firstHistory), null)
   assert.equal(storage.getItem(firstDraft), null)
+  assert.equal(storage.getItem(firstMigration), null)
   assert.equal(storage.getItem(secondHistory), '[{"id":"keep"}]')
 })

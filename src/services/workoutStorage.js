@@ -1,5 +1,6 @@
 export const HISTORY_KEY = 'aether-workout-history'
 export const DRAFT_KEY = 'aether-workout-drafts'
+export const HISTORY_MIGRATION_KEY = 'aether-workout-history-janus-v1'
 
 export function accountStorageKey(baseKey, accountId) {
   return `${baseKey}:${accountId}`
@@ -55,6 +56,7 @@ export function clearAccountWorkoutData(accountId, storage = browserStorage()) {
   try {
     storage.removeItem(accountStorageKey(HISTORY_KEY, accountId))
     storage.removeItem(accountStorageKey(DRAFT_KEY, accountId))
+    storage.removeItem(accountStorageKey(HISTORY_MIGRATION_KEY, accountId))
     return true
   } catch {
     return false

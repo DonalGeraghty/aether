@@ -15,13 +15,17 @@ function WorkoutApp({ user, logout, offline }) {
   const scheduled = useMemo(() => scheduledWorkout(), [])
   const [page, setPage] = useState('plan')
   const [selectedId, setSelectedId] = useState(scheduled.id)
+  const [finishing, setFinishing] = useState(false)
   const {
     drafts,
     setDrafts,
     history,
-    setHistory,
+    historyLoading,
+    historyError,
+    saveHistoryEntry,
+    deleteHistoryEntry,
     storageError,
-  } = useWorkoutStorage(user, scheduled.id)
+  } = useWorkoutStorage(user, scheduled.id, logout)
 
   const selectedWorkout = workouts.find((workout) => workout.id === selectedId) ?? scheduled
   const draft = drafts[selectedWorkout.id] ?? blankDraft()
@@ -46,26 +50,34 @@ function WorkoutApp({ user, logout, offline }) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const finishWorkout = () => {
+  const finishWorkout = async () => {
     const historyEntry = createHistoryEntry(selectedWorkout, draft)
-    setHistory((current) => [historyEntry, ...current])
-    setDrafts((current) => {
-      const next = { ...current }
-      delete next[selectedWorkout.id]
-      return next
-    })
-    setPage('history')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setFinishing(true)
+    try {
+      await saveHistoryEntry(historyEntry)
+      setDrafts((current) => {
+        const next = { ...current }
+        delete next[selectedWorkout.id]
+        return next
+      })
+      setPage('history')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } catch {
+      // The draft stays intact and the sync error is shown above the app.
+    } finally {
+      setFinishing(false)
+    }
   }
 
   return (
     <div className="app-shell">
       <AmbientBackground />
 
-      {(offline || storageError) && (
+      {(offline || storageError || historyError) && (
         <div className="app-notices" role="status">
           {offline && <p>Offline mode · account connections are temporarily unavailable.</p>}
           {storageError && <p>Device storage is unavailable · workout changes may not persist.</p>}
+          {historyError && <p>{historyError}</p>}
         </div>
       )}
 
@@ -78,11 +90,19 @@ function WorkoutApp({ user, logout, offline }) {
           draft={draft}
           updateDraft={updateDraft}
           onFinish={finishWorkout}
+          finishing={finishing}
           onViewPlan={showPlan}
         />
       )}
       {page === 'history' && (
-        <HistoryPage history={history} onTrain={() => setPage('today')} onViewPlan={showPlan} />
+        <HistoryPage
+          history={history}
+          loading={historyLoading}
+          onSave={saveHistoryEntry}
+          onDelete={deleteHistoryEntry}
+          onTrain={() => setPage('today')}
+          onViewPlan={showPlan}
+        />
       )}
       {page === 'account' && (
         <AccountPage onBack={() => setPage('today')} onViewPlan={showPlan} offline={offline} />
