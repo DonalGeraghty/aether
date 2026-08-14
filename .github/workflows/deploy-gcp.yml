@@ -113,7 +113,7 @@ jobs:
           echo "url=${url}" >> "${GITHUB_OUTPUT}"
 
       - name: Smoke test deployment
-        run: curl --fail --show-error --silent --retry 5 --retry-delay 5 "${{ steps.service.outputs.url }}/healthz"
+        run: curl --fail --show-error --silent --retry 5 --retry-delay 5 "${{ steps.service.outputs.url }}/health"
 
       - name: Publish deployment summary
         run: |

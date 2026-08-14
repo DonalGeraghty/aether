@@ -17,7 +17,7 @@ The account page uses Janus's shared AI profile and encrypted credential endpoin
 
 ## Cloud Run
 
-The production container builds the Vite application and serves it with nginx on port `8080`, including SPA fallback and a `/healthz` endpoint.
+The production container builds the Vite application and serves it with nginx on port `8080`, including SPA fallback and a `/health` endpoint.
 
 ```bash
 gcloud run deploy aether \
@@ -30,7 +30,7 @@ gcloud run deploy aether \
 
 ### GitHub Actions deployment
 
-The workflow at `.github/workflows/deploy-gcp.yml` validates the frontend, builds and pushes a SHA-tagged image to the `aether` Artifact Registry repository, deploys it to Cloud Run, and checks `/healthz` after every push to `main` or `master`. It can also be started manually with **Actions → Deploy Aether to Cloud Run → Run workflow**.
+The workflow at `.github/workflows/deploy-gcp.yml` validates the frontend, builds and pushes a SHA-tagged image to the `aether` Artifact Registry repository, deploys it to Cloud Run, and checks `/health` after every push to `main` or `master`. It can also be started manually with **Actions → Deploy Aether to Cloud Run → Run workflow**.
 
 Configure this repository before the first workflow run:
 
