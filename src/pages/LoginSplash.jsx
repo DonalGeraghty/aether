@@ -40,7 +40,7 @@ export default function LoginSplash() {
       <section className="auth-layout">
         <div className="auth-intro">
           <header className="brand">
-            <span className="brand-mark" aria-hidden="true">A</span>
+            <img className="brand-mark" src="/Aether-icon.png" alt="" />
             <span>Aether</span>
           </header>
           <div>

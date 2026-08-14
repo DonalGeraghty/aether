@@ -135,7 +135,7 @@ function App() {
   if (loading) {
     return (
       <main className="auth-loading" role="status" aria-live="polite">
-        <span className="brand-mark" aria-hidden="true">A</span>
+        <img className="brand-mark" src="/Aether-icon.png" alt="" />
         <p>Restoring your session…</p>
       </main>
     )
@@ -149,7 +149,7 @@ function App() {
 function Brand() {
   return (
     <header className="brand">
-      <span className="brand-mark" aria-hidden="true">A</span>
+      <img className="brand-mark" src="/Aether-icon.png" alt="" />
       <span>Aether</span>
     </header>
   )

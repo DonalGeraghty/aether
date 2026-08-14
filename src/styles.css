@@ -35,7 +35,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 
 .page { position: relative; z-index: 1; width: min(100% - 2rem, 68rem); min-height: 100vh; margin-inline: auto; padding: 1.25rem 0 8rem; }
 .brand { display: flex; align-items: center; gap: .65rem; color: var(--soft); font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.brand-mark { display: grid; width: 1.75rem; height: 1.75rem; place-items: center; border: 1px solid #474747; border-radius: 50%; color: var(--text); font-size: .68rem; }
+.brand-mark { display: block; width: 1.75rem; height: 1.75rem; border: 1px solid #69605a; border-radius: 50%; object-fit: cover; box-shadow: 0 0 .9rem rgb(232 211 173 / 16%); }
 .eyebrow { margin: 0 0 .7rem; color: var(--muted); font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; }
 
 .auth-loading { position: relative; z-index: 1; display: grid; min-height: 100vh; place-content: center; justify-items: center; gap: 1rem; color: var(--muted); background: var(--background); }

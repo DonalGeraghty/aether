@@ -30,7 +30,7 @@ export default function AccountPage({ onBack }) {
   return (
     <main className="page account-page">
       <header className="brand">
-        <span className="brand-mark" aria-hidden="true">A</span>
+        <img className="brand-mark" src="/Aether-icon.png" alt="" />
         <span>Aether</span>
       </header>
 
