@@ -6,7 +6,7 @@ const items = [
   { id: 'history', label: 'History', icon: 'history' },
 ]
 
-export default function Dock({ page, onChange }) {
+export default function Dock({ page, onChange, onLogout }) {
   return (
     <div className="dock-outer">
       <nav className="dock" aria-label="Primary navigation">
@@ -23,6 +23,16 @@ export default function Dock({ page, onChange }) {
             <Icon name={item.icon} size={21} />
           </button>
         ))}
+        <span className="dock-divider" aria-hidden="true" />
+        <button
+          className="dock-item"
+          type="button"
+          onClick={onLogout}
+          aria-label="Sign out"
+        >
+          <span className="dock-label">Sign out</span>
+          <Icon name="logout" size={21} />
+        </button>
       </nav>
     </div>
   )

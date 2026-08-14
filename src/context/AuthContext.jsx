@@ -1,0 +1,149 @@
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
+import {
+  API_BASE_URL,
+  API_ENDPOINTS,
+  authFetch,
+  getStoredToken,
+  setStoredToken,
+} from '../config/api.js'
+
+const AuthContext = createContext(null)
+const PROFILE_KEY = 'aether_auth_profile'
+
+function getStoredProfile() {
+  try {
+    const value = localStorage.getItem(PROFILE_KEY)
+    return value ? JSON.parse(value) : null
+  } catch {
+    return null
+  }
+}
+
+function setStoredProfile(profile) {
+  try {
+    if (profile) localStorage.setItem(PROFILE_KEY, JSON.stringify(profile))
+    else localStorage.removeItem(PROFILE_KEY)
+  } catch {
+    // The live session still works if persistent storage is unavailable.
+  }
+}
+
+function userFromResponse(data, fallbackEmail = '') {
+  const email = data.user?.email || fallbackEmail
+  const accountId = data.user?.account_id
+  if (!email || !accountId) throw new Error('Authentication response was incomplete')
+  return { email, accountId }
+}
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [sessionState, setSessionState] = useState('loading')
+
+  const applySession = useCallback((profile, token) => {
+    setStoredToken(token)
+    setStoredProfile(profile)
+    setUser(profile)
+    setSessionState('verified')
+  }, [])
+
+  const logout = useCallback(() => {
+    setStoredToken('')
+    setStoredProfile(null)
+    setUser(null)
+    setSessionState('anonymous')
+  }, [])
+
+  const bootstrap = useCallback(async () => {
+    const token = getStoredToken()
+    if (!token) {
+      setUser(null)
+      setSessionState('anonymous')
+      setLoading(false)
+      return
+    }
+
+    try {
+      const response = await authFetch(API_ENDPOINTS.AUTH_ME, { method: 'GET' })
+      const data = await response.json().catch(() => ({}))
+      if (response.ok) {
+        const profile = userFromResponse(data)
+        setStoredProfile(profile)
+        setUser(profile)
+        setSessionState('verified')
+      } else if (response.status === 401 || response.status === 403) {
+        logout()
+      } else {
+        const profile = getStoredProfile()
+        setUser(profile ? { ...profile, offlineSession: true } : null)
+        setSessionState(profile ? 'offline' : 'anonymous')
+      }
+    } catch {
+      const profile = getStoredProfile()
+      setUser(profile ? { ...profile, offlineSession: true } : null)
+      setSessionState(profile ? 'offline' : 'anonymous')
+    } finally {
+      setLoading(false)
+    }
+  }, [logout])
+
+  useEffect(() => {
+    bootstrap()
+  }, [bootstrap])
+
+  useEffect(() => {
+    if (sessionState !== 'offline') return undefined
+    const revalidate = () => bootstrap()
+    window.addEventListener('online', revalidate)
+    return () => window.removeEventListener('online', revalidate)
+  }, [bootstrap, sessionState])
+
+  const authenticate = useCallback(async (endpoint, email, password) => {
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    })
+    const data = await response.json().catch(() => ({}))
+    if (!response.ok) throw new Error(data.error || 'Authentication failed')
+    const profile = userFromResponse(data, email)
+    if (!data.token) throw new Error('Authentication response did not include a token')
+    applySession(profile, data.token)
+    return data
+  }, [applySession])
+
+  const login = useCallback(
+    (email, password) => authenticate(API_ENDPOINTS.AUTH_LOGIN, email, password),
+    [authenticate],
+  )
+
+  const register = useCallback(
+    (email, password) => authenticate(API_ENDPOINTS.AUTH_REGISTER, email, password),
+    [authenticate],
+  )
+
+  const value = useMemo(() => ({
+    user,
+    loading,
+    sessionState,
+    login,
+    register,
+    logout,
+    refreshSession: bootstrap,
+  }), [user, loading, sessionState, login, register, logout, bootstrap])
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+}
+
+export function useAuth() {
+  const context = useContext(AuthContext)
+  if (!context) throw new Error('useAuth must be used within AuthProvider')
+  return context
+}

@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import Dock from './components/Dock.jsx'
 import Icon from './components/Icon.jsx'
+import { useAuth } from './context/AuthContext.jsx'
+import LoginSplash from './pages/LoginSplash.jsx'
 import {
   dumbbellWeights,
   equipment,
@@ -12,10 +14,16 @@ import {
 const HISTORY_KEY = 'aether-workout-history'
 const DRAFT_KEY = 'aether-workout-drafts'
 
-const readStorage = (key, fallback) => {
+const readAccountStorage = (accountKey, legacyKey, fallback) => {
   try {
-    const value = localStorage.getItem(key)
-    return value ? JSON.parse(value) : fallback
+    const accountValue = localStorage.getItem(accountKey)
+    if (accountValue) return JSON.parse(accountValue)
+
+    const legacyValue = localStorage.getItem(legacyKey)
+    if (!legacyValue) return fallback
+    localStorage.setItem(accountKey, legacyValue)
+    localStorage.removeItem(legacyKey)
+    return JSON.parse(legacyValue)
   } catch {
     return fallback
   }
@@ -25,15 +33,17 @@ const formatDate = (value, options = {}) => new Intl.DateTimeFormat('en-IE', opt
 
 const blankDraft = () => ({ startedAt: null, entries: {}, note: '' })
 
-function App() {
+function WorkoutApp({ user, logout }) {
   const scheduled = useMemo(() => scheduledWorkout(), [])
+  const historyKey = `${HISTORY_KEY}:${user.accountId}`
+  const draftKey = `${DRAFT_KEY}:${user.accountId}`
   const [page, setPage] = useState('today')
   const [selectedId, setSelectedId] = useState(scheduled.id)
-  const [drafts, setDrafts] = useState(() => readStorage(DRAFT_KEY, {}))
-  const [history, setHistory] = useState(() => readStorage(HISTORY_KEY, []))
+  const [drafts, setDrafts] = useState(() => readAccountStorage(draftKey, DRAFT_KEY, {}))
+  const [history, setHistory] = useState(() => readAccountStorage(historyKey, HISTORY_KEY, []))
 
-  useEffect(() => localStorage.setItem(DRAFT_KEY, JSON.stringify(drafts)), [drafts])
-  useEffect(() => localStorage.setItem(HISTORY_KEY, JSON.stringify(history)), [history])
+  useEffect(() => localStorage.setItem(draftKey, JSON.stringify(drafts)), [draftKey, drafts])
+  useEffect(() => localStorage.setItem(historyKey, JSON.stringify(history)), [historyKey, history])
 
   const selectedWorkout = workouts.find((workout) => workout.id === selectedId) ?? scheduled
   const draft = drafts[selectedWorkout.id] ?? blankDraft()
@@ -101,9 +111,26 @@ function App() {
       {page === 'plan' && <PlanPage selectedId={selectedId} onChoose={chooseWorkout} />}
       {page === 'history' && <HistoryPage history={history} onTrain={() => setPage('today')} />}
 
-      <Dock page={page} onChange={setPage} />
+      <Dock page={page} onChange={setPage} onLogout={logout} />
     </div>
   )
+}
+
+function App() {
+  const { user, loading, logout } = useAuth()
+
+  if (loading) {
+    return (
+      <main className="auth-loading" role="status" aria-live="polite">
+        <span className="brand-mark" aria-hidden="true">A</span>
+        <p>Restoring your session…</p>
+      </main>
+    )
+  }
+
+  if (!user) return <LoginSplash />
+
+  return <WorkoutApp key={user.accountId} user={user} logout={logout} />
 }
 
 function Brand() {

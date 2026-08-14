@@ -37,6 +37,30 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .brand { display: flex; align-items: center; gap: .65rem; color: var(--soft); font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .brand-mark { display: grid; width: 1.75rem; height: 1.75rem; place-items: center; border: 1px solid #474747; border-radius: 50%; color: var(--text); font-size: .68rem; }
 .eyebrow { margin: 0 0 .7rem; color: var(--muted); font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; }
+
+.auth-loading { position: relative; z-index: 1; display: grid; min-height: 100vh; place-content: center; justify-items: center; gap: 1rem; color: var(--muted); background: var(--background); }
+.auth-loading .brand-mark { width: 2.4rem; height: 2.4rem; animation: pulse 1.5s ease-in-out infinite; }
+.auth-loading p { margin: 0; font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
+.auth-page { position: relative; min-height: 100vh; overflow: hidden; }
+.auth-layout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(22rem, .75fr); width: min(100% - 3rem, 76rem); min-height: 100vh; margin-inline: auto; }
+.auth-intro { display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem 4rem 4rem 0; }
+.auth-intro > div { padding-bottom: 6vh; }
+.auth-intro h1 { margin: 0; font-size: clamp(4.8rem, 10vw, 8.5rem); font-weight: 500; letter-spacing: -.08em; line-height: .83; }
+.auth-intro > div > p:last-child { max-width: 29rem; margin: 1.8rem 0 0; color: var(--muted); font-size: .95rem; line-height: 1.7; }
+.auth-panel { align-self: center; padding: clamp(1.5rem, 4vw, 2.5rem); border: 1px solid var(--line); border-radius: 1rem; background: rgb(8 8 8 / 88%); box-shadow: 0 2rem 6rem #000; backdrop-filter: blur(22px); }
+.auth-panel-heading h2 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 500; letter-spacing: -.045em; }
+.auth-panel-heading > p:last-child { margin: .55rem 0 0; color: var(--muted); font-size: .78rem; }
+.auth-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; margin: 2rem 0 1.5rem; padding: .3rem; border: 1px solid var(--line); border-radius: .65rem; background: #050505; }
+.auth-tabs button { padding: .62rem; border: 0; border-radius: .45rem; color: var(--muted); background: transparent; font-size: .72rem; cursor: pointer; }
+.auth-tabs button[aria-selected='true'] { color: var(--text); background: #171717; box-shadow: inset 0 0 0 1px #292929; }
+.auth-form { display: grid; gap: 1rem; }
+.auth-form label { display: grid; gap: .45rem; color: var(--muted); font-size: .68rem; }
+.auth-form input { width: 100%; height: 3rem; padding: 0 .85rem; border: 1px solid #292929; border-radius: .52rem; color: var(--text); background: #050505; }
+.auth-form input::placeholder { color: #505050; }
+.auth-form input:focus { border-color: #666; }
+.auth-error { margin: 0; padding: .75rem; border: 1px solid #4a2424; border-radius: .5rem; color: #ff9b9b; background: #160b0b; font-size: .72rem; line-height: 1.45; }
+.auth-submit { width: 100%; margin-top: .25rem; }
+.auth-footnote { margin: 1.25rem 0 0; color: #555; font-size: .65rem; text-align: center; }
 .hero { max-width: 43rem; padding: clamp(5rem, 13vh, 8rem) 0 3.5rem; }
 .hero h1, .content-hero h1 { margin: 0; font-size: clamp(3.8rem, 10vw, 7.4rem); font-weight: 500; letter-spacing: -.075em; line-height: .92; }
 .hero-copy, .content-hero > p, .content-hero > div > p { max-width: 34rem; margin: 1.3rem 0 0; color: var(--muted); font-size: clamp(.95rem, 2vw, 1.08rem); line-height: 1.7; }
@@ -147,8 +171,13 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .dock-item[aria-current='page'] { border-color: #333; color: #fff; background: #121212; }
 .dock-label { position: absolute; bottom: calc(100% + .65rem); left: 50%; padding: .27rem .5rem; border: 1px solid #272727; border-radius: .35rem; color: #ddd; background: #080808; font-size: .62rem; opacity: 0; transform: translate(-50%, .25rem); transition: opacity .15s, transform .15s; pointer-events: none; }
 .dock-item:hover .dock-label, .dock-item:focus-visible .dock-label { opacity: 1; transform: translate(-50%, 0); }
+.dock-divider { width: 1px; height: 1.8rem; margin: 0 .15rem; background: #292929; }
 
 @media (max-width: 54rem) {
+  .auth-layout { grid-template-columns: 1fr; width: min(100% - 2rem, 34rem); padding: 1rem 0 5rem; }
+  .auth-intro { min-height: 45vh; padding: 0; }
+  .auth-intro > div { padding: 5rem 0 3rem; }
+  .auth-intro h1 { font-size: clamp(4rem, 18vw, 6rem); }
   .workout-block { grid-template-columns: 1fr; gap: 1rem; }
   .block-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
   .block-heading p { max-width: 18rem; margin: 0; text-align: right; }
@@ -160,6 +189,12 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 }
 
 @media (max-width: 38rem) {
+  .auth-layout { width: min(100% - 1rem, 34rem); }
+  .auth-intro { min-height: 42vh; padding: .25rem .5rem 0; }
+  .auth-intro > div { padding: 4rem 0 2.5rem; }
+  .auth-intro h1 { font-size: clamp(3.8rem, 20vw, 5rem); }
+  .auth-intro > div > p:last-child { max-width: 22rem; margin-top: 1.25rem; font-size: .82rem; }
+  .auth-panel { padding: 1.25rem; }
   .page { width: min(100% - 1rem, 68rem); padding-top: .8rem; }
   .hero { padding-block: 4.5rem 2.5rem; }
   .hero h1, .content-hero h1 { font-size: clamp(3.2rem, 19vw, 5rem); }
