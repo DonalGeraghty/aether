@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import AmbientBackground from '../components/AmbientBackground.jsx'
+import Brand from '../components/Brand.jsx'
 import Icon from '../components/Icon.jsx'
-import { useAuth } from '../context/AuthContext.jsx'
+import { useAuth } from '../context/useAuth.js'
 
 export default function LoginSplash() {
   const { login, loginAsDemo, register } = useAuth()
@@ -31,18 +33,11 @@ export default function LoginSplash() {
 
   return (
     <main className="auth-page">
-      <div className="ambient" aria-hidden="true">
-        <span className="ambient-orbit ambient-orbit-one" />
-        <span className="ambient-orbit ambient-orbit-two" />
-        <span className="ambient-grain" />
-      </div>
+      <AmbientBackground />
 
       <section className="auth-layout">
         <div className="auth-intro">
-          <header className="brand">
-            <img className="brand-mark" src="/Aether-icon.png" alt="" />
-            <span>Aether</span>
-          </header>
+          <Brand />
           <div>
             <p className="eyebrow">Home training · remembered</p>
             <h1>Return to<br />the work.</h1>

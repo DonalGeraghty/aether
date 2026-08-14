@@ -1,11 +1,10 @@
 import {
-  createContext,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react'
+import { AuthContext } from './authContext.js'
 import {
   API_BASE_URL,
   API_ENDPOINTS,
@@ -13,8 +12,8 @@ import {
   getStoredToken,
   setStoredToken,
 } from '../config/api.js'
+import { clearAccountWorkoutData } from '../services/workoutStorage.js'
 
-const AuthContext = createContext(null)
 const PROFILE_KEY = 'aether_auth_profile'
 const DEMO_TOKEN = 'local-aether-demo-session'
 const DEMO_USER = {
@@ -107,7 +106,8 @@ export function AuthProvider({ children }) {
   }, [logout])
 
   useEffect(() => {
-    bootstrap()
+    const timer = window.setTimeout(bootstrap, 0)
+    return () => window.clearTimeout(timer)
   }, [bootstrap])
 
   useEffect(() => {
@@ -150,8 +150,9 @@ export function AuthProvider({ children }) {
     })
     const data = await response.json().catch(() => ({}))
     if (!response.ok) throw new Error(data.error || 'Could not delete account')
+    clearAccountWorkoutData(user.accountId)
     logout()
-  }, [logout, user?.email, user?.isDemo])
+  }, [logout, user])
 
   const loginAsDemo = useCallback(() => {
     if (!import.meta.env.DEV) return
@@ -167,14 +168,7 @@ export function AuthProvider({ children }) {
     register,
     logout,
     deleteAccount,
-    refreshSession: bootstrap,
-  }), [user, loading, sessionState, login, loginAsDemo, register, logout, deleteAccount, bootstrap])
+  }), [user, loading, sessionState, login, loginAsDemo, register, logout, deleteAccount])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-}
-
-export function useAuth() {
-  const context = useContext(AuthContext)
-  if (!context) throw new Error('useAuth must be used within AuthProvider')
-  return context
 }

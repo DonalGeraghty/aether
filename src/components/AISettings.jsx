@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useAuth } from '../context/AuthContext.jsx'
+import { useAuth } from '../context/useAuth.js'
 import { getAISettings, saveAISelection } from '../services/aiSettings.js'
 import ProviderKeySettings from './ProviderKeySettings.jsx'
 
@@ -30,12 +30,12 @@ function settingsErrorMessage(error) {
   return error.message || 'Could not update your AI profile.'
 }
 
-export default function AISettings() {
+export default function AISettings({ offline = false }) {
   const { user, logout } = useAuth()
   const [settings, setSettings] = useState(null)
   const [draftSelection, setDraftSelection] = useState({ provider: '', model: '' })
   const [draftModelsByProvider, setDraftModelsByProvider] = useState({})
-  const [loading, setLoading] = useState(!user?.isDemo)
+  const [loading, setLoading] = useState(!user?.isDemo && !offline)
   const [loadFailed, setLoadFailed] = useState(false)
   const [savingSelection, setSavingSelection] = useState(false)
   const [error, setError] = useState('')
@@ -48,7 +48,7 @@ export default function AISettings() {
   }, [logout])
 
   useEffect(() => {
-    if (user?.isDemo) return undefined
+    if (user?.isDemo || offline) return undefined
     let active = true
     getAISettings()
       .then((nextSettings) => {
@@ -68,7 +68,7 @@ export default function AISettings() {
         if (active) setLoading(false)
       })
     return () => { active = false }
-  }, [handleUnauthorized, user?.isDemo])
+  }, [handleUnauthorized, offline, user?.isDemo])
 
   const selectedProvider = useMemo(
     () => settings?.providers.find((provider) => provider.id === draftSelection.provider),
@@ -132,6 +132,16 @@ export default function AISettings() {
         <p className="settings-kicker">AI connections</p>
         <h2>Connect your preferred LLM.</h2>
         <p>The demo account cannot store API keys. Sign in with a Janus account to connect OpenAI, Mistral, or Anthropic.</p>
+      </section>
+    )
+  }
+
+  if (offline) {
+    return (
+      <section className="settings-card demo-ai-card">
+        <p className="settings-kicker">AI connections</p>
+        <h2>Reconnect to manage LLMs.</h2>
+        <p>Your saved provider settings remain in Janus and will be available when this device is online.</p>
       </section>
     )
   }

@@ -1,3 +1,5 @@
+import { workoutItems, workouts } from './workouts.js'
+
 const daysAgo = (days, hour = 18) => {
   const date = new Date()
   date.setDate(date.getDate() - days)
@@ -5,17 +7,25 @@ const daysAgo = (days, hour = 18) => {
   return date.toISOString()
 }
 
+const workoutSnapshot = (workoutId) => {
+  const workout = workouts.find((candidate) => candidate.id === workoutId)
+  if (!workout) throw new Error(`Unknown demo workout: ${workoutId}`)
+  return {
+    workoutId,
+    title: workout.title,
+    day: workout.day,
+    total: workoutItems(workout).length,
+  }
+}
+
 export function createDemoHistory() {
   return [
     {
+      ...workoutSnapshot('strength-a'),
       id: 'demo-strength-a-latest',
-      workoutId: 'strength-a',
-      title: 'Full-Body Strength A',
-      day: 'Monday',
       finishedAt: daysAgo(4),
       durationMinutes: 58,
       completed: 9,
-      total: 9,
       entries: {
         'a-goblet': { done: true, weight: '16', result: '12, 12, 11' },
         'a-floor-press': { done: true, weight: '14', result: '10, 10, 9' },
@@ -25,14 +35,11 @@ export function createDemoHistory() {
       note: 'Good energy. Move the floor press to 11 reps next week.',
     },
     {
+      ...workoutSnapshot('strength-b'),
       id: 'demo-strength-b-previous',
-      workoutId: 'strength-b',
-      title: 'Full-Body Strength B',
-      day: 'Friday',
       finishedAt: daysAgo(7),
       durationMinutes: 62,
       completed: 11,
-      total: 11,
       entries: {
         'b-split-squat': { done: true, weight: '12', result: '10, 10, 10' },
         'b-row': { done: true, weight: '18', result: '12, 12, 11' },
@@ -41,14 +48,11 @@ export function createDemoHistory() {
       note: 'Balance felt better on the single-leg RDL.',
     },
     {
+      ...workoutSnapshot('conditioning'),
       id: 'demo-conditioning-previous',
-      workoutId: 'conditioning',
-      title: 'Conditioning + Full Body',
-      day: 'Wednesday',
       finishedAt: daysAgo(9),
       durationMinutes: 57,
       completed: 8,
-      total: 8,
       entries: {
         'c-intervals': { done: true, result: '10 rounds · steady' },
         'c-lunge': { done: true, weight: '12', result: '10 / leg' },
@@ -57,14 +61,11 @@ export function createDemoHistory() {
       note: 'Held the same rowing pace across all ten intervals.',
     },
     {
+      ...workoutSnapshot('strength-a'),
       id: 'demo-strength-a-previous',
-      workoutId: 'strength-a',
-      title: 'Full-Body Strength A',
-      day: 'Monday',
       finishedAt: daysAgo(11),
       durationMinutes: 55,
       completed: 8,
-      total: 9,
       entries: {
         'a-goblet': { done: true, weight: '16', result: '10, 10, 10' },
         'a-floor-press': { done: true, weight: '14', result: '9, 9, 8' },
@@ -72,14 +73,11 @@ export function createDemoHistory() {
       note: 'Shortened the steady row but kept the appointment.',
     },
     {
+      ...workoutSnapshot('strength-b'),
       id: 'demo-first-session',
-      workoutId: 'strength-b',
-      title: 'Full-Body Strength B',
-      day: 'Friday',
       finishedAt: daysAgo(14),
       durationMinutes: 60,
       completed: 10,
-      total: 11,
       entries: {
         'b-split-squat': { done: true, weight: '10', result: '8, 8, 8' },
         'b-row': { done: true, weight: '16', result: '10, 10, 10' },

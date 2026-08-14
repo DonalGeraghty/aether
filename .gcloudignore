@@ -1,13 +1,13 @@
+.gcloudignore
 .git
 .github
 .agents
 .codex
 node_modules
 dist
+artwork
 npm-debug.log*
 .env
 .env.*
 *.local
 gha-creds-*.json
-artwork
-README.md

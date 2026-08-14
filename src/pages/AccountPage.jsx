@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import AISettings from '../components/AISettings.jsx'
-import { useAuth } from '../context/AuthContext.jsx'
+import Brand from '../components/Brand.jsx'
+import { useAuth } from '../context/useAuth.js'
 
-export default function AccountPage({ onBack }) {
+export default function AccountPage({ onBack, offline = false }) {
   const { user, deleteAccount } = useAuth()
   const [password, setPassword] = useState('')
   const [busy, setBusy] = useState(false)
@@ -29,10 +30,7 @@ export default function AccountPage({ onBack }) {
 
   return (
     <main className="page account-page">
-      <header className="brand">
-        <img className="brand-mark" src="/Aether-icon.png" alt="" />
-        <span>Aether</span>
-      </header>
+      <Brand />
 
       <section className="account-hero">
         <div>
@@ -48,7 +46,7 @@ export default function AccountPage({ onBack }) {
 
       {user?.isDemo && <p className="demo-account-note">Local demo account · nothing here is written to Janus or Firestore.</p>}
 
-      <AISettings />
+      <AISettings offline={offline} />
 
       {!user?.isDemo && (
         <section className="danger-card" aria-labelledby="danger-heading">

@@ -8,10 +8,7 @@
   color-scheme: dark;
   --background: #030303;
   --surface: rgb(9 9 9 / 88%);
-  --surface-solid: #090909;
-  --raised: #101010;
   --line: #202020;
-  --line-strong: #444;
   --text: #f3f3f1;
   --muted: #858585;
   --soft: #b8b8b3;
@@ -25,6 +22,8 @@ button { color: inherit; }
 button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid #ddd; outline-offset: 3px; }
 
 .app-shell { min-height: 100vh; overflow: hidden; }
+.app-notices { position: fixed; top: .75rem; right: .75rem; z-index: 60; display: grid; gap: .35rem; max-width: min(24rem, calc(100% - 1.5rem)); }
+.app-notices p { margin: 0; padding: .55rem .75rem; border: 1px solid #4a4125; border-radius: .5rem; color: #d8c88f; background: rgb(21 18 7 / 94%); font-size: .68rem; box-shadow: 0 .8rem 2rem #000; }
 .ambient { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 .ambient::before { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0, #030303 75%); content: ''; }
 .ambient-orbit { position: absolute; display: block; border: 1px solid rgb(255 255 255 / 7%); border-radius: 50%; filter: blur(.15px); }

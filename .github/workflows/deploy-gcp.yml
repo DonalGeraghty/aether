@@ -3,10 +3,11 @@ name: Deploy Aether to Cloud Run
 on:
   push:
     branches: [main, master]
+  pull_request:
   workflow_dispatch:
 
 concurrency:
-  group: aether-cloud-run-production
+  group: aether-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -18,53 +19,63 @@ env:
   SERVICE_NAME: aether
   REPOSITORY: aether
   JANUS_API_URL: ${{ vars.VITE_JANUS_API_URL || 'https://janus-api-schep5xsoq-ew.a.run.app' }}
+  CLOUD_RUN_SERVICE_ACCOUNT: ${{ vars.CLOUD_RUN_SERVICE_ACCOUNT }}
 
 jobs:
-  deploy:
+  check:
     runs-on: ubuntu-latest
-    environment: production
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '18.19.1'
+          node-version-file: .nvmrc
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build frontend
-        env:
-          VITE_JANUS_API_URL: ${{ env.JANUS_API_URL }}
-        run: npm run build
+      - name: Check frontend
+        run: npm run check
 
-      - name: Authenticate with Google Cloud
-        uses: google-github-actions/auth@v2
+  deploy:
+    if: ${{ github.event_name != 'pull_request' }}
+    needs: check
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Authenticate with Google Cloud using Workload Identity Federation
+        if: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER != '' }}
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT || 'aether-github-deployer@donal-geraghty-home.iam.gserviceaccount.com' }}
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Authenticate with Google Cloud using service-account key
+        if: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER == '' }}
+        uses: google-github-actions/auth@v3
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           project_id: ${{ env.PROJECT_ID }}
 
       - name: Set up Google Cloud CLI
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/setup-gcloud@v3
 
       - name: Verify Google Cloud target
         run: |
-          gcloud config set project "${PROJECT_ID}"
           gcloud auth list --filter=status:ACTIVE --format='value(account)'
           gcloud config get-value project
-
-      - name: Ensure Artifact Registry repository exists
-        run: |
-          if ! gcloud artifacts repositories describe "${REPOSITORY}" --location="${REGION}" >/dev/null 2>&1; then
-            gcloud artifacts repositories create "${REPOSITORY}" \
-              --repository-format=docker \
-              --location="${REGION}" \
-              --description="Aether frontend container images"
-          fi
 
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker "${REGION}-docker.pkg.dev" --quiet
@@ -73,7 +84,7 @@ jobs:
         env:
           IMAGE: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.SERVICE_NAME }}
         run: |
-          docker build \
+          docker build --pull \
             --build-arg "VITE_JANUS_API_URL=${JANUS_API_URL}" \
             --tag "${IMAGE}:${GITHUB_SHA}" \
             --tag "${IMAGE}:latest" \
@@ -90,17 +101,24 @@ jobs:
         env:
           IMAGE: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.SERVICE_NAME }}
         run: |
+          runtime_args=()
+          if [[ -n "${CLOUD_RUN_SERVICE_ACCOUNT}" ]]; then
+            runtime_args+=(--service-account "${CLOUD_RUN_SERVICE_ACCOUNT}")
+          fi
+
           gcloud run deploy "${SERVICE_NAME}" \
             --image "${IMAGE}:${GITHUB_SHA}" \
             --project "${PROJECT_ID}" \
             --region "${REGION}" \
             --platform managed \
-            --allow-unauthenticated \
             --port 8080 \
             --memory 256Mi \
             --cpu 1 \
             --min-instances 0 \
             --max-instances 3 \
+            --startup-probe="httpGet.path=/health,httpGet.port=8080,initialDelaySeconds=0,timeoutSeconds=2,periodSeconds=5,failureThreshold=12" \
+            --liveness-probe="httpGet.path=/health,httpGet.port=8080,initialDelaySeconds=5,timeoutSeconds=2,periodSeconds=30,failureThreshold=3" \
+            "${runtime_args[@]}" \
             --quiet
 
       - name: Read deployed service URL
@@ -113,7 +131,7 @@ jobs:
           echo "url=${url}" >> "${GITHUB_OUTPUT}"
 
       - name: Smoke test deployment
-        run: curl --fail --show-error --silent --retry 5 --retry-delay 5 "${{ steps.service.outputs.url }}/health"
+        run: curl --fail --show-error --silent --retry 5 --retry-all-errors --retry-delay 5 "${{ steps.service.outputs.url }}/health"
 
       - name: Publish deployment summary
         run: |
