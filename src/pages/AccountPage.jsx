@@ -3,7 +3,7 @@ import AISettings from '../components/AISettings.jsx'
 import Brand from '../components/Brand.jsx'
 import { useAuth } from '../context/useAuth.js'
 
-export default function AccountPage({ onBack, offline = false }) {
+export default function AccountPage({ onBack, onViewPlan, offline = false }) {
   const { user, deleteAccount } = useAuth()
   const [password, setPassword] = useState('')
   const [busy, setBusy] = useState(false)
@@ -30,7 +30,7 @@ export default function AccountPage({ onBack, offline = false }) {
 
   return (
     <main className="page account-page">
-      <Brand />
+      <Brand onPlan={onViewPlan} />
 
       <section className="account-hero">
         <div>

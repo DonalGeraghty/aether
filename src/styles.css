@@ -34,6 +34,8 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 
 .page { position: relative; z-index: 1; width: min(100% - 2rem, 68rem); min-height: 100vh; margin-inline: auto; padding: 1.25rem 0 8rem; }
 .brand { display: flex; align-items: center; gap: .65rem; color: var(--soft); font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.brand-home { display: block; padding: 0; border: 0; border-radius: 50%; color: inherit; background: none; cursor: pointer; }
+.brand-home:focus-visible { outline: 2px solid var(--warm); outline-offset: 3px; }
 .brand-mark { display: block; width: 1.75rem; height: 1.75rem; border: 1px solid #69605a; border-radius: 50%; object-fit: cover; box-shadow: 0 0 .9rem rgb(232 211 173 / 16%); }
 .eyebrow { margin: 0 0 .7rem; color: var(--muted); font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; }
 

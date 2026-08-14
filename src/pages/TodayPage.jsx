@@ -47,7 +47,7 @@ export default function TodayPage({ workout, draft, updateDraft, onFinish, onVie
 
   return (
     <main className="page today-page">
-      <Brand />
+      <Brand onPlan={onViewPlan} />
       <section className="hero">
         <p className="eyebrow">{dateLabel}</p>
         <h1>{workout.day === todayName ? 'Today’s work.' : `${workout.shortDay}’s work.`}</h1>

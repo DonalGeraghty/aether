@@ -2,10 +2,10 @@ import Brand from '../components/Brand.jsx'
 import Icon from '../components/Icon.jsx'
 import { equipment, workouts } from '../data/workouts.js'
 
-export default function PlanPage({ selectedId, onChoose }) {
+export default function PlanPage({ selectedId, onChoose, onViewPlan }) {
   return (
     <main className="page content-page">
-      <Brand />
+      <Brand onPlan={onViewPlan} />
       <section className="content-hero">
         <p className="eyebrow">Three days · after work</p>
         <h1>The week.</h1>

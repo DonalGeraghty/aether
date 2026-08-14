@@ -13,7 +13,7 @@ import { blankDraft, createHistoryEntry } from './services/workoutSession.js'
 
 function WorkoutApp({ user, logout, offline }) {
   const scheduled = useMemo(() => scheduledWorkout(), [])
-  const [page, setPage] = useState('today')
+  const [page, setPage] = useState('plan')
   const [selectedId, setSelectedId] = useState(scheduled.id)
   const {
     drafts,
@@ -38,6 +38,11 @@ function WorkoutApp({ user, logout, offline }) {
   const chooseWorkout = (id) => {
     setSelectedId(id)
     setPage('today')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const showPlan = () => {
+    setPage('plan')
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -70,14 +75,18 @@ function WorkoutApp({ user, logout, offline }) {
           draft={draft}
           updateDraft={updateDraft}
           onFinish={finishWorkout}
-          onViewPlan={() => setPage('plan')}
+          onViewPlan={showPlan}
         />
       )}
-      {page === 'plan' && <PlanPage selectedId={selectedId} onChoose={chooseWorkout} />}
-      {page === 'history' && (
-        <HistoryPage history={history} onTrain={() => setPage('today')} />
+      {page === 'plan' && (
+        <PlanPage selectedId={selectedId} onChoose={chooseWorkout} onViewPlan={showPlan} />
       )}
-      {page === 'account' && <AccountPage onBack={() => setPage('today')} offline={offline} />}
+      {page === 'history' && (
+        <HistoryPage history={history} onTrain={() => setPage('today')} onViewPlan={showPlan} />
+      )}
+      {page === 'account' && (
+        <AccountPage onBack={() => setPage('today')} onViewPlan={showPlan} offline={offline} />
+      )}
 
       <Dock page={page} onChange={setPage} onLogout={logout} />
     </div>

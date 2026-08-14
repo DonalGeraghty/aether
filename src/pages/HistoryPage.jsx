@@ -2,7 +2,7 @@ import Brand from '../components/Brand.jsx'
 import Icon from '../components/Icon.jsx'
 import { formatDate } from '../utils/date.js'
 
-export default function HistoryPage({ history, onTrain }) {
+export default function HistoryPage({ history, onTrain, onViewPlan }) {
   const totalMinutes = history.reduce((total, item) => total + item.durationMinutes, 0)
   const thisMonth = history.filter((item) => {
     const date = new Date(item.finishedAt)
@@ -12,7 +12,7 @@ export default function HistoryPage({ history, onTrain }) {
 
   return (
     <main className="page content-page">
-      <Brand />
+      <Brand onPlan={onViewPlan} />
       <section className="content-hero history-hero">
         <div>
           <p className="eyebrow">Training record</p>
