@@ -69,6 +69,9 @@ function WorkoutApp({ user, logout, offline }) {
         </div>
       )}
 
+      {page === 'plan' && (
+        <PlanPage selectedId={selectedId} onChoose={chooseWorkout} onViewPlan={showPlan} />
+      )}
       {page === 'today' && (
         <TodayPage
           workout={selectedWorkout}
@@ -77,9 +80,6 @@ function WorkoutApp({ user, logout, offline }) {
           onFinish={finishWorkout}
           onViewPlan={showPlan}
         />
-      )}
-      {page === 'plan' && (
-        <PlanPage selectedId={selectedId} onChoose={chooseWorkout} onViewPlan={showPlan} />
       )}
       {page === 'history' && (
         <HistoryPage history={history} onTrain={() => setPage('today')} onViewPlan={showPlan} />
