@@ -22,7 +22,7 @@ await Promise.all([
   sharp(source)
     .resize(32, 32, { fit: 'cover' })
     .png({ compressionLevel: 9, palette: true })
-    .toFile(filePath('../public/favicon-32.png')),
+    .toFile(filePath('../public/aether-favicon-32-v2.png')),
   sharp(source)
     .resize(180, 180, { fit: 'cover' })
     .png({ compressionLevel: 9 })
