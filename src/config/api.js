@@ -1,6 +1,6 @@
 // Janus is the shared authentication API used by Aether and Nyx.
 export const API_BASE_URL = (
-  import.meta.env.VITE_JANUS_API_URL
+  import.meta.env?.VITE_JANUS_API_URL
   || 'https://janus-api-schep5xsoq-ew.a.run.app'
 ).replace(/\/$/, '')
 
@@ -11,6 +11,7 @@ export const API_ENDPOINTS = {
   AUTH_DELETE_ACCOUNT: '/api/auth/account',
   AI_SETTINGS: '/api/user/ai-settings',
   AI_CREDENTIALS: '/api/user/ai-credentials',
+  WORKOUTS_ANALYZE: '/api/workouts/analyze',
   WORKOUTS: '/api/workouts',
 }
 

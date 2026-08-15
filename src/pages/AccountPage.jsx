@@ -40,7 +40,7 @@ export default function AccountPage({ onBack, onViewPlan, offline = false }) {
         <div className="account-identity">
           <span>Signed in as</span>
           <strong>{user?.email}</strong>
-          <button type="button" onClick={onBack}>← Back to training</button>
+          <button type="button" onClick={onBack}>← Back to home</button>
         </div>
       </section>
 
