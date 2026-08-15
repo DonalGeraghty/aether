@@ -9,11 +9,12 @@ import HistoryPage from './pages/HistoryPage.jsx'
 import LoginSplash from './pages/LoginSplash.jsx'
 import PlanPage from './pages/PlanPage.jsx'
 import TodayPage from './pages/TodayPage.jsx'
+import WorkoutLogPage from './pages/WorkoutLogPage.jsx'
 import { blankDraft, createHistoryEntry } from './services/workoutSession.js'
 
 function WorkoutApp({ user, logout, offline }) {
   const scheduled = useMemo(() => scheduledWorkout(), [])
-  const [page, setPage] = useState('plan')
+  const [page, setPage] = useState('log')
   const [selectedId, setSelectedId] = useState(scheduled.id)
   const [finishing, setFinishing] = useState(false)
   const {
@@ -81,6 +82,16 @@ function WorkoutApp({ user, logout, offline }) {
         </div>
       )}
 
+      {page === 'log' && (
+        <WorkoutLogPage
+          onLog={saveHistoryEntry}
+          onAccount={() => setPage('account')}
+          onUnauthorized={logout}
+          onViewPlan={showPlan}
+          demo={user.isDemo}
+        />
+      )}
+
       {page === 'plan' && (
         <PlanPage selectedId={selectedId} onChoose={chooseWorkout} onViewPlan={showPlan} />
       )}
@@ -105,7 +116,7 @@ function WorkoutApp({ user, logout, offline }) {
         />
       )}
       {page === 'account' && (
-        <AccountPage onBack={() => setPage('today')} onViewPlan={showPlan} offline={offline} />
+        <AccountPage onBack={() => setPage('log')} onViewPlan={showPlan} offline={offline} />
       )}
 
       <Dock page={page} onChange={setPage} onLogout={logout} />

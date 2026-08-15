@@ -1,6 +1,6 @@
 # Aether
 
-A barebones home workout tracker built with React and Vite. The initial three-day program is based on the plan in the neighbouring Achilles project. Authentication uses the shared Janus API and the same Firestore-backed accounts as Nyx.
+A focused home workout tracker built with React and Vite. Its home page turns a natural-language description of a completed workout into a reviewable structured log using the account's selected AI provider. Confirmed logs, manually completed sessions, and the initial three-day program share the same Janus-synced workout history. Authentication uses the shared Janus API and the same Firestore-backed accounts as Nyx.
 
 ## Run locally
 
@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Workout drafts are stored per Janus account in the browser with `localStorage`. Completed sessions are saved through Janus in the authenticated user's Firestore `workout_history` subcollection and cached locally for display. Existing browser-only history is uploaded once when workout sync first becomes available. Set `VITE_JANUS_API_URL` to override the production Janus API URL during local API development.
+Workout drafts are stored per Janus account in the browser with `localStorage`. The AI logger calls `POST /api/workouts/analyze`, lets the user review the structured result, and saves only after confirmation through `PUT /api/workouts/{entry_id}`. Completed sessions are stored in the authenticated user's Firestore `workout_history` subcollection and cached locally for display. Existing browser-only history is uploaded once when workout sync first becomes available. Set `VITE_JANUS_API_URL` to override the production Janus API URL during local API development.
 
 Deploy the Janus workout endpoints before deploying this Aether version. Until Janus exposes `/api/workouts`, Aether keeps existing cached history visible but will not clear a completed workout draft or claim that the session was saved.
 

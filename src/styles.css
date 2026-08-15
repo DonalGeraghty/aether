@@ -125,6 +125,39 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .text-button { display: flex; align-items: center; gap: .55rem; margin: 1.25rem auto 0; padding: .7rem; border: 0; color: var(--muted); background: transparent; font-size: .75rem; cursor: pointer; }
 .text-button:hover { color: var(--text); }
 
+.workout-log-hero { max-width: 48rem; padding: clamp(5rem, 13vh, 8rem) 0 3.5rem; }
+.workout-log-hero h1 { margin: 0; font-size: clamp(4rem, 11vw, 7.5rem); font-weight: 500; letter-spacing: -.075em; line-height: .9; }
+.workout-log-hero > p:last-child { max-width: 38rem; margin: 1.3rem 0 0; color: var(--muted); font-size: clamp(.95rem, 2vw, 1.08rem); line-height: 1.7; }
+.workout-log-composer { display: grid; gap: .75rem; padding: clamp(1.25rem, 4vw, 2rem); border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); box-shadow: 0 2rem 6rem rgb(0 0 0 / 30%); backdrop-filter: blur(22px); }
+.workout-log-composer > label { color: var(--soft); font-size: .75rem; font-weight: 600; }
+.workout-log-composer textarea { width: 100%; min-height: 9rem; padding: 1rem; border: 1px solid #292929; border-radius: .65rem; color: var(--text); background: #050505; line-height: 1.6; resize: vertical; }
+.workout-log-composer textarea::placeholder { color: #555; }
+.workout-log-composer > div { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.workout-log-composer > div > span { color: #666; font-family: 'DM Mono', monospace; font-size: .6rem; text-transform: uppercase; }
+.workout-log-error { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; padding: .85rem 1rem; border: 1px solid #4a2424; border-radius: .65rem; color: #ff9b9b; background: #160b0b; font-size: .74rem; }
+.workout-log-error p { margin: 0; }
+.workout-log-error button { flex: 0 0 auto; padding: 0; border: 0; color: var(--text); background: transparent; font-size: .7rem; text-decoration: underline; cursor: pointer; }
+.workout-analysis { overflow: hidden; margin-top: 1.25rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); box-shadow: 0 2rem 6rem rgb(0 0 0 / 30%); backdrop-filter: blur(22px); }
+.workout-analysis-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; padding: clamp(1.35rem, 4vw, 2rem); border-bottom: 1px solid var(--line); }
+.workout-analysis-heading .eyebrow { margin-bottom: .55rem; }
+.workout-analysis-heading h2 { margin: 0; font-size: clamp(1.65rem, 4vw, 2.35rem); font-weight: 500; letter-spacing: -.045em; }
+.workout-analysis-heading > div:first-child > p:last-child { max-width: 38rem; margin: .7rem 0 0; color: var(--muted); font-size: .78rem; line-height: 1.6; }
+.workout-analysis-meta { display: grid; flex: 0 0 auto; justify-items: end; gap: .3rem; }
+.workout-analysis-meta strong { font-family: 'DM Mono', monospace; font-size: 1rem; font-weight: 400; }
+.workout-analysis-meta span { color: var(--muted); font-family: 'DM Mono', monospace; font-size: .6rem; text-transform: uppercase; }
+.analyzed-exercise-list { margin: 0; padding: 0 clamp(1.35rem, 4vw, 2rem); list-style: none; }
+.analyzed-exercise-list li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .8rem; padding: 1.1rem 0; border-bottom: 1px solid #181818; }
+.analyzed-exercise-list li:last-child { border-bottom: 0; }
+.analyzed-exercise-list li > span { color: #666; font-family: 'DM Mono', monospace; font-size: .66rem; }
+.analyzed-exercise-list strong { display: block; font-size: .82rem; font-weight: 600; }
+.analyzed-exercise-list p { margin: .25rem 0 0; color: var(--muted); font-size: .7rem; line-height: 1.5; }
+.workout-assumptions { margin: 0 clamp(1.35rem, 4vw, 2rem); padding: 1rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .7rem; }
+.workout-assumptions summary { width: fit-content; cursor: pointer; }
+.workout-assumptions ul { margin: .75rem 0 0; padding-left: 1.1rem; line-height: 1.6; }
+.workout-clarification { margin: 0 clamp(1.35rem, 4vw, 2rem) 1rem; padding: .75rem; border: 1px solid #4a4125; border-radius: .5rem; color: #d8c88f; background: #151207; font-size: .72rem; line-height: 1.5; }
+.workout-analysis-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem clamp(1.35rem, 4vw, 2rem); border-top: 1px solid var(--line); }
+.workout-analysis-footer p { margin: 0; color: var(--muted); font-size: .7rem; }
+
 .content-page { padding-top: 1.25rem; }
 .content-hero { padding: clamp(5rem, 13vh, 8rem) 0 4.5rem; }
 .content-hero h1 { font-size: clamp(4rem, 11vw, 7.5rem); }
@@ -285,6 +318,17 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
   .auth-panel { padding: 1.25rem; }
   .page { width: min(100% - 1rem, 68rem); padding-top: .8rem; }
   .hero { padding-block: 4.5rem 2.5rem; }
+  .workout-log-hero { padding-block: 4.5rem 2.5rem; }
+  .workout-log-hero h1 { font-size: clamp(3.2rem, 19vw, 5rem); }
+  .workout-log-composer { padding: 1.25rem; }
+  .workout-log-composer > div { display: grid; }
+  .workout-log-composer .primary-button { width: 100%; }
+  .workout-log-composer > div > span { grid-row: 2; text-align: center; }
+  .workout-analysis-heading { display: grid; gap: 1.25rem; }
+  .workout-analysis-meta { justify-items: start; }
+  .workout-analysis-footer { display: grid; }
+  .workout-analysis-footer .primary-button { width: 100%; }
+  .workout-log-error { align-items: flex-start; }
   .hero h1, .content-hero h1 { font-size: clamp(3.2rem, 19vw, 5rem); }
   .hero-copy { max-width: 20rem; font-size: .88rem; }
   .workout-heading { gap: .8rem; padding: 1.25rem; }
