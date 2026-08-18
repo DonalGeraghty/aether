@@ -175,7 +175,7 @@ export default function TodayPage({
                         {previousResult && (
                           <p className="previous-performance">
                             <span>
-                              Previous · {formatDate(previous.finishedAt, {
+                              Last session · {formatDate(previous.finishedAt, {
                                 day: 'numeric',
                                 month: 'short',
                               })}
