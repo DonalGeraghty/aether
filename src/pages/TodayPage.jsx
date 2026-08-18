@@ -7,6 +7,7 @@ import { formatDate } from '../utils/date.js'
 export default function TodayPage({
   workout,
   draft,
+  previousEntries,
   updateDraft,
   onFinish,
   finishing,
@@ -118,6 +119,13 @@ export default function TodayPage({
               <div className="exercise-list">
                 {block.items.map((item) => {
                   const entry = draft.entries[item.id] ?? {}
+                  const previous = previousEntries[item.id]
+                  const previousResult = previous && [
+                    previous.weight
+                      ? `${previous.weight} kg${item.loadMode === 'each' ? ' each' : ''}`
+                      : '',
+                    previous.result,
+                  ].filter(Boolean).join(' · ')
                   return (
                     <article className={`exercise-row ${entry.done ? 'is-done' : ''}`} key={item.id}>
                       <button
@@ -134,34 +142,47 @@ export default function TodayPage({
                         <span>{item.detail ?? item.target}</span>
                       </div>
                       <span className="exercise-target">{item.target}</span>
-                      <div className="exercise-inputs">
-                        {item.kind === 'weight' && (
+                      <div className="exercise-performance">
+                        <div className="exercise-inputs">
+                          {item.kind === 'weight' && (
+                            <label>
+                              <span>{item.loadMode === 'each' ? 'Each' : 'Load'}</span>
+                              <select
+                                value={entry.weight ?? ''}
+                                onChange={(event) => updateEntry(item.id, { weight: event.target.value })}
+                              >
+                                <option value="">— kg</option>
+                                {dumbbellWeights.map((weight) => (
+                                  <option key={weight} value={weight}>{weight} kg</option>
+                                ))}
+                              </select>
+                            </label>
+                          )}
                           <label>
-                            <span>Load</span>
-                            <select
-                              value={entry.weight ?? ''}
-                              onChange={(event) => updateEntry(item.id, { weight: event.target.value })}
-                            >
-                              <option value="">— kg</option>
-                              {dumbbellWeights.map((weight) => (
-                                <option key={weight} value={weight}>{weight} kg</option>
-                              ))}
-                            </select>
+                            <span>
+                              {item.kind === 'cardio'
+                                ? 'Pace / result'
+                                : item.kind === 'time' ? 'Time' : 'Reps'}
+                            </span>
+                            <input
+                              value={entry.result ?? ''}
+                              onChange={(event) => updateEntry(item.id, { result: event.target.value })}
+                              maxLength="200"
+                              placeholder={item.kind === 'cardio' ? 'Optional' : 'e.g. 10, 10, 9'}
+                            />
                           </label>
+                        </div>
+                        {previousResult && (
+                          <p className="previous-performance">
+                            <span>
+                              Previous · {formatDate(previous.finishedAt, {
+                                day: 'numeric',
+                                month: 'short',
+                              })}
+                            </span>
+                            <strong>{previousResult}</strong>
+                          </p>
                         )}
-                        <label>
-                          <span>
-                            {item.kind === 'cardio'
-                              ? 'Pace / result'
-                              : item.kind === 'time' ? 'Time' : 'Reps'}
-                          </span>
-                          <input
-                            value={entry.result ?? ''}
-                            onChange={(event) => updateEntry(item.id, { result: event.target.value })}
-                            maxLength="200"
-                            placeholder={item.kind === 'cardio' ? 'Optional' : 'e.g. 10, 10, 9'}
-                          />
-                        </label>
                       </div>
                     </article>
                   )

@@ -4,6 +4,30 @@ export function blankDraft() {
   return { startedAt: null, entries: {}, note: '' }
 }
 
+export function previousExercisePerformance(history, workoutId) {
+  const sessions = [...history]
+    .filter((entry) => entry.workoutId === workoutId)
+    .sort((left, right) => new Date(right.finishedAt) - new Date(left.finishedAt))
+  const previous = {}
+
+  for (const session of sessions) {
+    for (const [exerciseId, entry] of Object.entries(session.entries || {})) {
+      if (previous[exerciseId] || !entry?.done) continue
+      const weight = String(entry.weight ?? '').trim()
+      const result = String(entry.result ?? '').trim()
+      if (!weight && !result) continue
+
+      previous[exerciseId] = {
+        finishedAt: session.finishedAt,
+        weight,
+        result,
+      }
+    }
+  }
+
+  return previous
+}
+
 export function createHistoryEntry(workout, draft, finishedAt = new Date().toISOString()) {
   const items = workoutItems(workout)
   const completed = items.filter((item) => draft.entries[item.id]?.done)
