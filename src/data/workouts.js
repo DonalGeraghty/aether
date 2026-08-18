@@ -1,5 +1,5 @@
 export const equipment = [
-  { name: 'Adjustable dumbbell', detail: '4–20 kg · 2 kg increments' },
+  { name: 'Adjustable dumbbells', detail: 'Pair · 4–20 kg each · 2 kg increments' },
   { name: 'Push-up grips', detail: 'For a comfortable, deeper range' },
   { name: 'DOMYOS Essential 120', detail: 'Rowing machine' },
 ]
@@ -29,9 +29,9 @@ export const workouts = [
         note: '3 sets each · rest 45–90 sec',
         items: [
           { id: 'a-goblet', name: 'Goblet squat', target: '3 × 8–12', kind: 'weight' },
-          { id: 'a-floor-press', name: 'One-arm floor press', target: '3 × 8–12 / side', kind: 'weight' },
-          { id: 'a-row', name: 'One-arm dumbbell row', target: '3 × 10–15 / side', kind: 'weight' },
-          { id: 'a-rdl', name: 'Dumbbell Romanian deadlift', target: '3 × 10–15', kind: 'weight' },
+          { id: 'a-dumbbell-floor-press', name: 'Dumbbell floor press', target: '3 × 8–12', kind: 'weight', loadMode: 'each' },
+          { id: 'a-bent-over-row', name: 'Bent-over dumbbell row', target: '3 × 10–15', kind: 'weight', loadMode: 'each' },
+          { id: 'a-two-dumbbell-rdl', name: 'Two-dumbbell Romanian deadlift', target: '3 × 10–15', kind: 'weight', loadMode: 'each' },
         ],
       },
       {
@@ -82,10 +82,10 @@ export const workouts = [
         range: '25:00–50:00',
         note: '3 rounds · rest 60–90 sec between rounds',
         items: [
-          { id: 'c-lunge', name: 'Reverse dumbbell lunge', target: '8–10 / leg', kind: 'weight' },
+          { id: 'c-reverse-lunge', name: 'Reverse lunge with dumbbells', target: '8–10 / leg', kind: 'weight', loadMode: 'each' },
           { id: 'c-pushup', name: 'Push-ups using grips', target: '8–15 reps', kind: 'reps' },
-          { id: 'c-press', name: 'One-arm overhead press', target: '8–12 / arm', kind: 'weight' },
-          { id: 'c-row', name: 'One-arm dumbbell row', target: '10–15 / arm', kind: 'weight' },
+          { id: 'c-dumbbell-press', name: 'Dumbbell overhead press', target: '8–12 reps', kind: 'weight', loadMode: 'each' },
+          { id: 'c-bent-over-row', name: 'Bent-over dumbbell row', target: '10–15 reps', kind: 'weight', loadMode: 'each' },
         ],
       },
       {
@@ -119,10 +119,10 @@ export const workouts = [
         range: '5:00–35:00',
         note: '3 sets each · rest 45–90 sec',
         items: [
-          { id: 'b-split-squat', name: 'Split squat', target: '3 × 8–12 / leg', kind: 'weight' },
+          { id: 'b-dumbbell-split-squat', name: 'Split squat with dumbbells', target: '3 × 8–12 / leg', kind: 'weight', loadMode: 'each' },
           { id: 'b-pushup', name: 'Push-ups using grips', target: '3 × 8–15', kind: 'reps' },
           { id: 'b-single-rdl', name: 'Single-leg Romanian deadlift', target: '3 × 8–12 / leg', kind: 'weight' },
-          { id: 'b-row', name: 'One-arm dumbbell row', target: '3 × 10–15 / arm', kind: 'weight' },
+          { id: 'b-bent-over-row', name: 'Bent-over dumbbell row', target: '3 × 10–15', kind: 'weight', loadMode: 'each' },
         ],
       },
       {
@@ -130,8 +130,8 @@ export const workouts = [
         range: '35:00–47:00',
         note: '2 rounds · keep the block moving',
         items: [
-          { id: 'b-press', name: 'One-arm overhead press', target: '8–12 / arm', kind: 'weight' },
-          { id: 'b-curl', name: 'Dumbbell curl', target: '10–15 / arm', kind: 'weight' },
+          { id: 'b-dumbbell-press', name: 'Dumbbell overhead press', target: '8–12 reps', kind: 'weight', loadMode: 'each' },
+          { id: 'b-simultaneous-curl', name: 'Simultaneous dumbbell curl', target: '10–15 reps', kind: 'weight', loadMode: 'each' },
           { id: 'b-triceps', name: 'Overhead triceps extension', target: '10–15 reps', kind: 'weight' },
           { id: 'b-suitcase', name: 'Suitcase hold or carry', target: '30–60 sec / side', kind: 'weight' },
         ],

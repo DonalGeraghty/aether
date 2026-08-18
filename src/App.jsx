@@ -10,7 +10,11 @@ import LoginSplash from './pages/LoginSplash.jsx'
 import PlanPage from './pages/PlanPage.jsx'
 import TodayPage from './pages/TodayPage.jsx'
 import WorkoutLogPage from './pages/WorkoutLogPage.jsx'
-import { blankDraft, createHistoryEntry } from './services/workoutSession.js'
+import {
+  blankDraft,
+  createHistoryEntry,
+  previousExercisePerformance,
+} from './services/workoutSession.js'
 
 function WorkoutApp({ user, logout, offline }) {
   const scheduled = useMemo(() => scheduledWorkout(), [])
@@ -30,6 +34,10 @@ function WorkoutApp({ user, logout, offline }) {
 
   const selectedWorkout = workouts.find((workout) => workout.id === selectedId) ?? scheduled
   const draft = drafts[selectedWorkout.id] ?? blankDraft()
+  const previousEntries = useMemo(
+    () => previousExercisePerformance(history, selectedWorkout.id),
+    [history, selectedWorkout.id],
+  )
 
   const updateDraft = (updater) => {
     setDrafts((current) => ({
@@ -99,6 +107,7 @@ function WorkoutApp({ user, logout, offline }) {
         <TodayPage
           workout={selectedWorkout}
           draft={draft}
+          previousEntries={previousEntries}
           updateDraft={updateDraft}
           onFinish={finishWorkout}
           finishing={finishing}
