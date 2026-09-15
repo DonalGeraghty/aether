@@ -1,4 +1,4 @@
-// Janus is the shared authentication API used by Aether and Nyx.
+// Janus is the shared authentication API used by Aether, Minerva, and Nyx.
 export const API_BASE_URL = (
   import.meta.env?.VITE_JANUS_API_URL
   || 'https://janus-api-schep5xsoq-ew.a.run.app'
