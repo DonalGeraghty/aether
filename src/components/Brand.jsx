@@ -2,7 +2,7 @@ export default function Brand({ onPlan }) {
   return (
     <header className="brand">
       {onPlan ? (
-        <button className="brand-home" type="button" onClick={onPlan} aria-label="Open workout plan">
+        <button className="brand-home" type="button" onClick={onPlan} aria-label="Open Today">
           <img className="brand-mark" src="/aether-icon-128.webp" alt="" />
         </button>
       ) : (

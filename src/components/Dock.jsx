@@ -1,10 +1,10 @@
 import Icon from './Icon.jsx'
 
 const items = [
-  { id: 'log', label: 'Home', icon: 'dumbbell' },
-  { id: 'plan', label: 'Plan', icon: 'plan' },
   { id: 'today', label: 'Today', icon: 'today' },
-  { id: 'history', label: 'History', icon: 'history' },
+  { id: 'habits', label: 'Habits', icon: 'check' },
+  { id: 'calendar', label: 'Calendar', icon: 'history' },
+  { id: 'assistant', label: 'Assistant', icon: 'sparkles' },
   { id: 'account', label: 'Account', icon: 'account' },
 ]
 

@@ -3,7 +3,7 @@ import AISettings from '../components/AISettings.jsx'
 import Brand from '../components/Brand.jsx'
 import { useAuth } from '../context/useAuth.js'
 
-export default function AccountPage({ onBack, onViewPlan, offline = false }) {
+export default function AccountPage({ onBack, onViewPlan, offline = false, children }) {
   const { user, deleteAccount } = useAuth()
   const [password, setPassword] = useState('')
   const [busy, setBusy] = useState(false)
@@ -47,6 +47,8 @@ export default function AccountPage({ onBack, onViewPlan, offline = false }) {
       {user?.isDemo && <p className="demo-account-note">Local demo account · nothing here is written to Janus or Firestore.</p>}
 
       <AISettings offline={offline} />
+
+      {children}
 
       {!user?.isDemo && (
         <section className="danger-card" aria-labelledby="danger-heading">

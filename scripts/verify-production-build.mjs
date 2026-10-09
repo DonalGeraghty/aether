@@ -7,6 +7,7 @@ const forbiddenProductionText = [
   'demo-strength-a-latest',
   'Demo workout —',
   'Explore demo',
+  'local-habit-demo-read',
 ]
 
 async function filesWithin(directory) {

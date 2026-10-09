@@ -151,6 +151,7 @@ export function AuthProvider({ children }) {
     const data = await response.json().catch(() => ({}))
     if (!response.ok) throw new Error(data.error || 'Could not delete account')
     clearAccountWorkoutData(user.accountId)
+    try { localStorage.removeItem(`aether-habits-v1:${user.accountId}`) } catch { /* Storage may be unavailable. */ }
     logout()
   }, [logout, user])
 

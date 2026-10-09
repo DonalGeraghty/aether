@@ -1,0 +1,1976 @@
+[
+  {
+    "id": "check",
+    "label": "Checkmark",
+    "category": "Everyday",
+    "keywords": "complete done tick yes",
+    "component": "Check"
+  },
+  {
+    "id": "plan",
+    "label": "Checklist",
+    "category": "Everyday",
+    "keywords": "tasks plan routine todo",
+    "component": "ListChecks"
+  },
+  {
+    "id": "star",
+    "label": "Star",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Star"
+  },
+  {
+    "id": "target",
+    "label": "Target",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Target"
+  },
+  {
+    "id": "flag",
+    "label": "Flag",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Flag"
+  },
+  {
+    "id": "award",
+    "label": "Award",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Award"
+  },
+  {
+    "id": "trophy",
+    "label": "Trophy",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Trophy"
+  },
+  {
+    "id": "flame",
+    "label": "Flame",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Flame"
+  },
+  {
+    "id": "sparkles",
+    "label": "Sparkles",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Sparkles"
+  },
+  {
+    "id": "circle-check",
+    "label": "Circle Check",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "CircleCheck"
+  },
+  {
+    "id": "bookmark",
+    "label": "Bookmark",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Bookmark"
+  },
+  {
+    "id": "smile",
+    "label": "Smile",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Smile"
+  },
+  {
+    "id": "thumbs-up",
+    "label": "Thumbs Up",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "ThumbsUp"
+  },
+  {
+    "id": "circle",
+    "label": "Circle",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Circle"
+  },
+  {
+    "id": "square",
+    "label": "Square",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Square"
+  },
+  {
+    "id": "triangle",
+    "label": "Triangle",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Triangle"
+  },
+  {
+    "id": "hexagon",
+    "label": "Hexagon",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Hexagon"
+  },
+  {
+    "id": "infinity",
+    "label": "Infinity",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "Infinity"
+  },
+  {
+    "id": "circle-dot",
+    "label": "Circle Dot",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "CircleDot"
+  },
+  {
+    "id": "circle-dashed",
+    "label": "Dotted circle",
+    "category": "Everyday",
+    "keywords": "",
+    "component": "CircleDashed"
+  },
+  {
+    "id": "heart",
+    "label": "Heart",
+    "category": "Health & fitness",
+    "keywords": "love care health gratitude",
+    "component": "Heart"
+  },
+  {
+    "id": "dumbbell",
+    "label": "Dumbbell",
+    "category": "Health & fitness",
+    "keywords": "gym exercise workout lifting strength",
+    "component": "Dumbbell"
+  },
+  {
+    "id": "walk",
+    "label": "Walking",
+    "category": "Health & fitness",
+    "keywords": "walk steps walking exercise run running",
+    "component": "Footprints"
+  },
+  {
+    "id": "activity",
+    "label": "Activity",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Activity"
+  },
+  {
+    "id": "heart-pulse",
+    "label": "Heart Pulse",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "HeartPulse"
+  },
+  {
+    "id": "bike",
+    "label": "Bike",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Bike"
+  },
+  {
+    "id": "person-standing",
+    "label": "Person Standing",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "PersonStanding"
+  },
+  {
+    "id": "accessibility",
+    "label": "Accessibility",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Accessibility"
+  },
+  {
+    "id": "stretch-horizontal",
+    "label": "Stretch Horizontal",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "StretchHorizontal"
+  },
+  {
+    "id": "move",
+    "label": "Movement",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Move"
+  },
+  {
+    "id": "timer",
+    "label": "Timer",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Timer"
+  },
+  {
+    "id": "gauge",
+    "label": "Gauge",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Gauge"
+  },
+  {
+    "id": "weight",
+    "label": "Weight",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Weight"
+  },
+  {
+    "id": "biceps-flexed",
+    "label": "Strength",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "BicepsFlexed"
+  },
+  {
+    "id": "stethoscope",
+    "label": "Stethoscope",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Stethoscope"
+  },
+  {
+    "id": "pill",
+    "label": "Pill",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Pill"
+  },
+  {
+    "id": "bandage",
+    "label": "Bandage",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Bandage"
+  },
+  {
+    "id": "hospital",
+    "label": "Hospital",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Hospital"
+  },
+  {
+    "id": "cross",
+    "label": "Cross",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "Cross"
+  },
+  {
+    "id": "shield-check",
+    "label": "Shield Check",
+    "category": "Health & fitness",
+    "keywords": "",
+    "component": "ShieldCheck"
+  },
+  {
+    "id": "hand-heart",
+    "label": "Hand Heart",
+    "category": "Health & fitness",
+    "keywords": "gratitude kindness care",
+    "component": "HandHeart"
+  },
+  {
+    "id": "heart-handshake",
+    "label": "Heart Handshake",
+    "category": "Health & fitness",
+    "keywords": "relationship friends kindness connection",
+    "component": "HeartHandshake"
+  },
+  {
+    "id": "sun",
+    "label": "Sun",
+    "category": "Mind & rest",
+    "keywords": "morning day light sunshine",
+    "component": "Sun"
+  },
+  {
+    "id": "moon",
+    "label": "Moon",
+    "category": "Mind & rest",
+    "keywords": "evening night bedtime",
+    "component": "Moon"
+  },
+  {
+    "id": "leaf",
+    "label": "Leaf",
+    "category": "Mind & rest",
+    "keywords": "nature outdoors garden plant meditation",
+    "component": "Leaf"
+  },
+  {
+    "id": "flower",
+    "label": "Flower",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Flower"
+  },
+  {
+    "id": "flower2",
+    "label": "Flower2",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Flower2"
+  },
+  {
+    "id": "brain",
+    "label": "Brain",
+    "category": "Mind & rest",
+    "keywords": "mind mindfulness focus meditation mental",
+    "component": "Brain"
+  },
+  {
+    "id": "brain-circuit",
+    "label": "Brain Circuit",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "BrainCircuit"
+  },
+  {
+    "id": "lightbulb",
+    "label": "Lightbulb",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Lightbulb"
+  },
+  {
+    "id": "coffee",
+    "label": "Coffee",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Coffee"
+  },
+  {
+    "id": "bed-double",
+    "label": "Bed Double",
+    "category": "Mind & rest",
+    "keywords": "sleep rest bedtime",
+    "component": "BedDouble"
+  },
+  {
+    "id": "bed",
+    "label": "Bed",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Bed"
+  },
+  {
+    "id": "alarm-clock",
+    "label": "Alarm Clock",
+    "category": "Mind & rest",
+    "keywords": "wake morning early sleep alarm",
+    "component": "AlarmClock"
+  },
+  {
+    "id": "sunrise",
+    "label": "Sunrise",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Sunrise"
+  },
+  {
+    "id": "sunset",
+    "label": "Sunset",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Sunset"
+  },
+  {
+    "id": "cloud-moon",
+    "label": "Cloud Moon",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "CloudMoon"
+  },
+  {
+    "id": "cloud-sun",
+    "label": "Cloud Sun",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "CloudSun"
+  },
+  {
+    "id": "wind",
+    "label": "Wind",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Wind"
+  },
+  {
+    "id": "waves",
+    "label": "Waves",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Waves"
+  },
+  {
+    "id": "sparkle",
+    "label": "Sparkle",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Sparkle"
+  },
+  {
+    "id": "scan-eye",
+    "label": "Scan Eye",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "ScanEye"
+  },
+  {
+    "id": "eye",
+    "label": "Eye",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Eye"
+  },
+  {
+    "id": "headphones",
+    "label": "Headphones",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Headphones"
+  },
+  {
+    "id": "smile-plus",
+    "label": "Smile Plus",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "SmilePlus"
+  },
+  {
+    "id": "frown",
+    "label": "Frown",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Frown"
+  },
+  {
+    "id": "meh",
+    "label": "Meh",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Meh"
+  },
+  {
+    "id": "bath",
+    "label": "Bath",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Bath"
+  },
+  {
+    "id": "lamp",
+    "label": "Lamp",
+    "category": "Mind & rest",
+    "keywords": "",
+    "component": "Lamp"
+  },
+  {
+    "id": "water",
+    "label": "Water",
+    "category": "Food & drink",
+    "keywords": "drink water hydrate hydration",
+    "component": "Droplet"
+  },
+  {
+    "id": "apple",
+    "label": "Apple",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Apple"
+  },
+  {
+    "id": "banana",
+    "label": "Banana",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Banana"
+  },
+  {
+    "id": "cherry",
+    "label": "Cherry",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Cherry"
+  },
+  {
+    "id": "grape",
+    "label": "Grape",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Grape"
+  },
+  {
+    "id": "citrus",
+    "label": "Citrus",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Citrus"
+  },
+  {
+    "id": "carrot",
+    "label": "Carrot",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Carrot"
+  },
+  {
+    "id": "salad",
+    "label": "Salad",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Salad"
+  },
+  {
+    "id": "soup",
+    "label": "Soup",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Soup"
+  },
+  {
+    "id": "utensils",
+    "label": "Utensils",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Utensils"
+  },
+  {
+    "id": "utensils-crossed",
+    "label": "Utensils Crossed",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "UtensilsCrossed"
+  },
+  {
+    "id": "cooking-pot",
+    "label": "Cooking Pot",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "CookingPot"
+  },
+  {
+    "id": "chef-hat",
+    "label": "Chef Hat",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "ChefHat"
+  },
+  {
+    "id": "egg",
+    "label": "Egg",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Egg"
+  },
+  {
+    "id": "fish",
+    "label": "Fish",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Fish"
+  },
+  {
+    "id": "drumstick",
+    "label": "Drumstick",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Drumstick"
+  },
+  {
+    "id": "wheat",
+    "label": "Wheat",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Wheat"
+  },
+  {
+    "id": "croissant",
+    "label": "Croissant",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Croissant"
+  },
+  {
+    "id": "sandwich",
+    "label": "Sandwich",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Sandwich"
+  },
+  {
+    "id": "pizza",
+    "label": "Pizza",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Pizza"
+  },
+  {
+    "id": "cup-soda",
+    "label": "Cup Soda",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "CupSoda"
+  },
+  {
+    "id": "glass-water",
+    "label": "Glass Water",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "GlassWater"
+  },
+  {
+    "id": "wine",
+    "label": "Wine",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Wine"
+  },
+  {
+    "id": "beer",
+    "label": "Beer",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Beer"
+  },
+  {
+    "id": "milk",
+    "label": "Milk",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Milk"
+  },
+  {
+    "id": "ice-cream-bowl",
+    "label": "Ice Cream Bowl",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "IceCreamBowl"
+  },
+  {
+    "id": "cake",
+    "label": "Cake",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Cake"
+  },
+  {
+    "id": "cookie",
+    "label": "Cookie",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Cookie"
+  },
+  {
+    "id": "candy",
+    "label": "Candy",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Candy"
+  },
+  {
+    "id": "nut",
+    "label": "Nut",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Nut"
+  },
+  {
+    "id": "popcorn",
+    "label": "Popcorn",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Popcorn"
+  },
+  {
+    "id": "ice-cream-cone",
+    "label": "Ice Cream Cone",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "IceCreamCone"
+  },
+  {
+    "id": "beef",
+    "label": "Beef",
+    "category": "Food & drink",
+    "keywords": "",
+    "component": "Beef"
+  },
+  {
+    "id": "book",
+    "label": "Reading",
+    "category": "Learning & work",
+    "keywords": "read book literature pages reading",
+    "component": "BookOpen"
+  },
+  {
+    "id": "closed-book",
+    "label": "Book",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Book"
+  },
+  {
+    "id": "book-marked",
+    "label": "Book Marked",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "BookMarked"
+  },
+  {
+    "id": "book-open-check",
+    "label": "Book Open Check",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "BookOpenCheck"
+  },
+  {
+    "id": "library",
+    "label": "Library",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Library"
+  },
+  {
+    "id": "library-big",
+    "label": "Library Big",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "LibraryBig"
+  },
+  {
+    "id": "graduation-cap",
+    "label": "Graduation Cap",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "GraduationCap"
+  },
+  {
+    "id": "notebook",
+    "label": "Notebook",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Notebook"
+  },
+  {
+    "id": "notebook-pen",
+    "label": "Notebook Pen",
+    "category": "Learning & work",
+    "keywords": "write journal diary notes",
+    "component": "NotebookPen"
+  },
+  {
+    "id": "pencil",
+    "label": "Pencil",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Pencil"
+  },
+  {
+    "id": "pen-tool",
+    "label": "Pen Tool",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "PenTool"
+  },
+  {
+    "id": "school",
+    "label": "School",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "School"
+  },
+  {
+    "id": "languages",
+    "label": "Languages",
+    "category": "Learning & work",
+    "keywords": "study learn language spanish french vocabulary",
+    "component": "Languages"
+  },
+  {
+    "id": "globe",
+    "label": "Globe",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Globe"
+  },
+  {
+    "id": "calculator",
+    "label": "Calculator",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Calculator"
+  },
+  {
+    "id": "microscope",
+    "label": "Microscope",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Microscope"
+  },
+  {
+    "id": "telescope",
+    "label": "Telescope",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Telescope"
+  },
+  {
+    "id": "atom",
+    "label": "Atom",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Atom"
+  },
+  {
+    "id": "flask-conical",
+    "label": "Flask Conical",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "FlaskConical"
+  },
+  {
+    "id": "test-tube",
+    "label": "Test Tube",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "TestTube"
+  },
+  {
+    "id": "compass",
+    "label": "Compass",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Compass"
+  },
+  {
+    "id": "ruler",
+    "label": "Ruler",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Ruler"
+  },
+  {
+    "id": "monitor",
+    "label": "Monitor",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Monitor"
+  },
+  {
+    "id": "laptop",
+    "label": "Laptop",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Laptop"
+  },
+  {
+    "id": "keyboard",
+    "label": "Keyboard",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Keyboard"
+  },
+  {
+    "id": "mouse",
+    "label": "Mouse",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Mouse"
+  },
+  {
+    "id": "smartphone",
+    "label": "Smartphone",
+    "category": "Learning & work",
+    "keywords": "phone screen digital detox",
+    "component": "Smartphone"
+  },
+  {
+    "id": "code",
+    "label": "Code",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Code"
+  },
+  {
+    "id": "braces",
+    "label": "Braces",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Braces"
+  },
+  {
+    "id": "terminal",
+    "label": "Terminal",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Terminal"
+  },
+  {
+    "id": "database",
+    "label": "Database",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Database"
+  },
+  {
+    "id": "file-text",
+    "label": "File Text",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "FileText"
+  },
+  {
+    "id": "clipboard-check",
+    "label": "Clipboard Check",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "ClipboardCheck"
+  },
+  {
+    "id": "briefcase",
+    "label": "Briefcase",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Briefcase"
+  },
+  {
+    "id": "briefcase-business",
+    "label": "Briefcase Business",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "BriefcaseBusiness"
+  },
+  {
+    "id": "presentation",
+    "label": "Presentation",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Presentation"
+  },
+  {
+    "id": "chart-no-axes-combined",
+    "label": "Progress chart",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "ChartNoAxesCombined"
+  },
+  {
+    "id": "calendar",
+    "label": "Calendar",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Calendar"
+  },
+  {
+    "id": "calendar-check",
+    "label": "Calendar Check",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "CalendarCheck"
+  },
+  {
+    "id": "calendar-days",
+    "label": "Calendar Days",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "CalendarDays"
+  },
+  {
+    "id": "clock",
+    "label": "Clock",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Clock"
+  },
+  {
+    "id": "hourglass",
+    "label": "Hourglass",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Hourglass"
+  },
+  {
+    "id": "list-todo",
+    "label": "List Todo",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "ListTodo"
+  },
+  {
+    "id": "list-ordered",
+    "label": "List Ordered",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "ListOrdered"
+  },
+  {
+    "id": "check-check",
+    "label": "Check Check",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "CheckCheck"
+  },
+  {
+    "id": "folder",
+    "label": "Folder",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Folder"
+  },
+  {
+    "id": "folder-open",
+    "label": "Folder Open",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "FolderOpen"
+  },
+  {
+    "id": "archive",
+    "label": "Archive",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Archive"
+  },
+  {
+    "id": "search",
+    "label": "Search",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Search"
+  },
+  {
+    "id": "message-square",
+    "label": "Message Square",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "MessageSquare"
+  },
+  {
+    "id": "messages-square",
+    "label": "Messages Square",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "MessagesSquare"
+  },
+  {
+    "id": "mail",
+    "label": "Mail",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Mail"
+  },
+  {
+    "id": "phone",
+    "label": "Phone",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Phone"
+  },
+  {
+    "id": "handshake",
+    "label": "Handshake",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Handshake"
+  },
+  {
+    "id": "wallet",
+    "label": "Wallet",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Wallet"
+  },
+  {
+    "id": "banknote",
+    "label": "Banknote",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Banknote"
+  },
+  {
+    "id": "coins",
+    "label": "Coins",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Coins"
+  },
+  {
+    "id": "landmark",
+    "label": "Landmark",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Landmark"
+  },
+  {
+    "id": "receipt",
+    "label": "Receipt",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "Receipt"
+  },
+  {
+    "id": "piggy-bank",
+    "label": "Piggy Bank",
+    "category": "Learning & work",
+    "keywords": "save money savings finances",
+    "component": "PiggyBank"
+  },
+  {
+    "id": "credit-card",
+    "label": "Credit Card",
+    "category": "Learning & work",
+    "keywords": "",
+    "component": "CreditCard"
+  },
+  {
+    "id": "house",
+    "label": "House",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "House"
+  },
+  {
+    "id": "door-open",
+    "label": "Door Open",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "DoorOpen"
+  },
+  {
+    "id": "key-round",
+    "label": "Key Round",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "KeyRound"
+  },
+  {
+    "id": "sofa",
+    "label": "Sofa",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Sofa"
+  },
+  {
+    "id": "armchair",
+    "label": "Armchair",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Armchair"
+  },
+  {
+    "id": "lamp-desk",
+    "label": "Lamp Desk",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "LampDesk"
+  },
+  {
+    "id": "trash2",
+    "label": "Trash2",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Trash2"
+  },
+  {
+    "id": "brush",
+    "label": "Brush",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Brush"
+  },
+  {
+    "id": "paintbrush",
+    "label": "Paintbrush",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Paintbrush"
+  },
+  {
+    "id": "spray-can",
+    "label": "Spray Can",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "SprayCan"
+  },
+  {
+    "id": "washing-machine",
+    "label": "Washing Machine",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "WashingMachine"
+  },
+  {
+    "id": "refrigerator",
+    "label": "Refrigerator",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Refrigerator"
+  },
+  {
+    "id": "microwave",
+    "label": "Microwave",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Microwave"
+  },
+  {
+    "id": "baby",
+    "label": "Baby",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Baby"
+  },
+  {
+    "id": "users",
+    "label": "Users",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Users"
+  },
+  {
+    "id": "user-round",
+    "label": "User Round",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "UserRound"
+  },
+  {
+    "id": "contact",
+    "label": "Contact",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Contact"
+  },
+  {
+    "id": "hand",
+    "label": "Hand",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Hand"
+  },
+  {
+    "id": "helping-hand",
+    "label": "Helping Hand",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "HelpingHand"
+  },
+  {
+    "id": "shopping-bag",
+    "label": "Shopping Bag",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "ShoppingBag"
+  },
+  {
+    "id": "shopping-basket",
+    "label": "Shopping Basket",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "ShoppingBasket"
+  },
+  {
+    "id": "shopping-cart",
+    "label": "Shopping Cart",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "ShoppingCart"
+  },
+  {
+    "id": "package",
+    "label": "Package",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Package"
+  },
+  {
+    "id": "package-check",
+    "label": "Package Check",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "PackageCheck"
+  },
+  {
+    "id": "boxes",
+    "label": "Boxes",
+    "category": "Home & family",
+    "keywords": "",
+    "component": "Boxes"
+  },
+  {
+    "id": "broom",
+    "label": "Broom",
+    "category": "Home & family",
+    "keywords": "clean chores house sweeping",
+    "component": "Broom"
+  },
+  {
+    "id": "tree-pine",
+    "label": "Tree Pine",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "TreePine"
+  },
+  {
+    "id": "trees",
+    "label": "Trees",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Trees"
+  },
+  {
+    "id": "sprout",
+    "label": "Sprout",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Sprout"
+  },
+  {
+    "id": "clover",
+    "label": "Clover",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Clover"
+  },
+  {
+    "id": "mountain",
+    "label": "Mountain",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Mountain"
+  },
+  {
+    "id": "mountain-snow",
+    "label": "Mountain Snow",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "MountainSnow"
+  },
+  {
+    "id": "tent",
+    "label": "Tent",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Tent"
+  },
+  {
+    "id": "tent-tree",
+    "label": "Tent Tree",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "TentTree"
+  },
+  {
+    "id": "map",
+    "label": "Map",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Map"
+  },
+  {
+    "id": "map-pin",
+    "label": "Map Pin",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "MapPin"
+  },
+  {
+    "id": "navigation",
+    "label": "Navigation",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Navigation"
+  },
+  {
+    "id": "route",
+    "label": "Route",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Route"
+  },
+  {
+    "id": "plane",
+    "label": "Plane",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Plane"
+  },
+  {
+    "id": "train-front",
+    "label": "Train Front",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "TrainFront"
+  },
+  {
+    "id": "bus",
+    "label": "Bus",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Bus"
+  },
+  {
+    "id": "car",
+    "label": "Car",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Car"
+  },
+  {
+    "id": "car-front",
+    "label": "Car Front",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "CarFront"
+  },
+  {
+    "id": "ship",
+    "label": "Ship",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Ship"
+  },
+  {
+    "id": "sailboat",
+    "label": "Sailboat",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Sailboat"
+  },
+  {
+    "id": "rocket",
+    "label": "Rocket",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Rocket"
+  },
+  {
+    "id": "luggage",
+    "label": "Luggage",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Luggage"
+  },
+  {
+    "id": "backpack",
+    "label": "Backpack",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Backpack"
+  },
+  {
+    "id": "camera",
+    "label": "Camera",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Camera"
+  },
+  {
+    "id": "binoculars",
+    "label": "Binoculars",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Binoculars"
+  },
+  {
+    "id": "sun-snow",
+    "label": "Sun Snow",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "SunSnow"
+  },
+  {
+    "id": "umbrella",
+    "label": "Umbrella",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Umbrella"
+  },
+  {
+    "id": "cloud",
+    "label": "Cloud",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Cloud"
+  },
+  {
+    "id": "cloud-rain",
+    "label": "Cloud Rain",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "CloudRain"
+  },
+  {
+    "id": "cloud-lightning",
+    "label": "Cloud Lightning",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "CloudLightning"
+  },
+  {
+    "id": "snowflake",
+    "label": "Snowflake",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Snowflake"
+  },
+  {
+    "id": "paw-print",
+    "label": "Paw Print",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "PawPrint"
+  },
+  {
+    "id": "dog",
+    "label": "Dog",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Dog"
+  },
+  {
+    "id": "cat",
+    "label": "Cat",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Cat"
+  },
+  {
+    "id": "bird",
+    "label": "Bird",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Bird"
+  },
+  {
+    "id": "rabbit",
+    "label": "Rabbit",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Rabbit"
+  },
+  {
+    "id": "turtle",
+    "label": "Turtle",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Turtle"
+  },
+  {
+    "id": "bug",
+    "label": "Bug",
+    "category": "Nature & travel",
+    "keywords": "",
+    "component": "Bug"
+  },
+  {
+    "id": "music",
+    "label": "Music",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Music"
+  },
+  {
+    "id": "music2",
+    "label": "Music2",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Music2"
+  },
+  {
+    "id": "guitar",
+    "label": "Guitar",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Guitar"
+  },
+  {
+    "id": "piano",
+    "label": "Piano",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Piano"
+  },
+  {
+    "id": "drum",
+    "label": "Drum",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Drum"
+  },
+  {
+    "id": "mic",
+    "label": "Mic",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Mic"
+  },
+  {
+    "id": "palette",
+    "label": "Palette",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Palette"
+  },
+  {
+    "id": "scissors",
+    "label": "Scissors",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Scissors"
+  },
+  {
+    "id": "clapperboard",
+    "label": "Clapperboard",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Clapperboard"
+  },
+  {
+    "id": "film",
+    "label": "Film",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Film"
+  },
+  {
+    "id": "video",
+    "label": "Video",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Video"
+  },
+  {
+    "id": "image",
+    "label": "Image",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Image"
+  },
+  {
+    "id": "gamepad2",
+    "label": "Gamepad2",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Gamepad2"
+  },
+  {
+    "id": "puzzle",
+    "label": "Puzzle",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Puzzle"
+  },
+  {
+    "id": "dice5",
+    "label": "Dice5",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Dice5"
+  },
+  {
+    "id": "dice6",
+    "label": "Dice6",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Dice6"
+  },
+  {
+    "id": "spade",
+    "label": "Spade",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Spade"
+  },
+  {
+    "id": "club",
+    "label": "Club",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Club"
+  },
+  {
+    "id": "diamond",
+    "label": "Diamond",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Diamond"
+  },
+  {
+    "id": "volleyball",
+    "label": "Volleyball",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Volleyball"
+  },
+  {
+    "id": "radio",
+    "label": "Radio",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Radio"
+  },
+  {
+    "id": "tv",
+    "label": "Tv",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Tv"
+  },
+  {
+    "id": "ticket",
+    "label": "Ticket",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Ticket"
+  },
+  {
+    "id": "party-popper",
+    "label": "Party Popper",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "PartyPopper"
+  },
+  {
+    "id": "gift",
+    "label": "Gift",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Gift"
+  },
+  {
+    "id": "joystick",
+    "label": "Joystick",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Joystick"
+  },
+  {
+    "id": "blocks",
+    "label": "Blocks",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Blocks"
+  },
+  {
+    "id": "origami",
+    "label": "Origami",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Origami"
+  },
+  {
+    "id": "shapes",
+    "label": "Shapes",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "Shapes"
+  },
+  {
+    "id": "pencil-ruler",
+    "label": "Pencil Ruler",
+    "category": "Creativity & play",
+    "keywords": "",
+    "component": "PencilRuler"
+  },
+  {
+    "id": "battery-full",
+    "label": "Battery Full",
+    "category": "Technology",
+    "keywords": "",
+    "component": "BatteryFull"
+  },
+  {
+    "id": "battery-charging",
+    "label": "Battery Charging",
+    "category": "Technology",
+    "keywords": "",
+    "component": "BatteryCharging"
+  },
+  {
+    "id": "plug",
+    "label": "Plug",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Plug"
+  },
+  {
+    "id": "plug-zap",
+    "label": "Plug Zap",
+    "category": "Technology",
+    "keywords": "",
+    "component": "PlugZap"
+  },
+  {
+    "id": "power",
+    "label": "Power",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Power"
+  },
+  {
+    "id": "wifi",
+    "label": "Wifi",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Wifi"
+  },
+  {
+    "id": "bluetooth",
+    "label": "Bluetooth",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Bluetooth"
+  },
+  {
+    "id": "cpu",
+    "label": "Processor",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Cpu"
+  },
+  {
+    "id": "hard-drive",
+    "label": "Hard Drive",
+    "category": "Technology",
+    "keywords": "",
+    "component": "HardDrive"
+  },
+  {
+    "id": "usb",
+    "label": "Usb",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Usb"
+  },
+  {
+    "id": "cable",
+    "label": "Cable",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Cable"
+  },
+  {
+    "id": "circuit-board",
+    "label": "Circuit Board",
+    "category": "Technology",
+    "keywords": "",
+    "component": "CircuitBoard"
+  },
+  {
+    "id": "fingerprint",
+    "label": "Fingerprint",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Fingerprint"
+  },
+  {
+    "id": "lock",
+    "label": "Lock",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Lock"
+  },
+  {
+    "id": "lock-open",
+    "label": "Lock Open",
+    "category": "Technology",
+    "keywords": "",
+    "component": "LockOpen"
+  },
+  {
+    "id": "shield",
+    "label": "Shield",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Shield"
+  },
+  {
+    "id": "bell",
+    "label": "Bell",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Bell"
+  },
+  {
+    "id": "bell-off",
+    "label": "Bell Off",
+    "category": "Technology",
+    "keywords": "",
+    "component": "BellOff"
+  },
+  {
+    "id": "vibrate",
+    "label": "Vibrate",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Vibrate"
+  },
+  {
+    "id": "smartphone-nfc",
+    "label": "Smartphone Nfc",
+    "category": "Technology",
+    "keywords": "",
+    "component": "SmartphoneNfc"
+  },
+  {
+    "id": "watch",
+    "label": "Watch",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Watch"
+  },
+  {
+    "id": "headset",
+    "label": "Headset",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Headset"
+  },
+  {
+    "id": "network",
+    "label": "Network",
+    "category": "Technology",
+    "keywords": "",
+    "component": "Network"
+  },
+  {
+    "id": "mouse-pointer2",
+    "label": "Mouse Pointer2",
+    "category": "Technology",
+    "keywords": "",
+    "component": "MousePointer2"
+  },
+  {
+    "id": "qr-code",
+    "label": "QR code",
+    "category": "Technology",
+    "keywords": "",
+    "component": "QrCode"
+  },
+  {
+    "id": "scan-line",
+    "label": "Scan Line",
+    "category": "Technology",
+    "keywords": "",
+    "component": "ScanLine"
+  }
+]
