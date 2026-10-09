@@ -1,0 +1,102 @@
+<div id="aether-hold-preview" class="viz-carousel viz-dotted-background" aria-label="Aether habit layouts">
+  <section data-variant="Circles" aria-label="Circular habit grid">
+    <div class="ah-app ah-circles"><header><span class="ah-brand">aether</span><span class="ah-meta">Interaction preview</span></header><div class="ah-heading"><h2>Today</h2><span class="ah-count" aria-live="polite"></span></div><div class="ah-habits"></div><footer>Hold to complete · Select a completed habit to undo</footer></div>
+  </section>
+  <section data-variant="Rows" aria-label="Compact habit rows" hidden>
+    <div class="ah-app ah-rows"><header><span class="ah-brand">aether</span><span class="ah-meta">Interaction preview</span></header><div class="ah-heading"><h2>Today</h2><span class="ah-count" aria-live="polite"></span></div><div class="ah-habits"></div><footer>Hold to complete · Select a completed habit to undo</footer></div>
+  </section>
+</div>
+<style>
+#aether-hold-preview {padding:20px 12px;}
+#aether-hold-preview .ah-app {--ah-bg:light-dark(#faf9f6,#181b20);--ah-fg:light-dark(#202b31,#edf0ee);--ah-soft:light-dark(#58656a,#aab5b8);--ah-track:light-dark(#e5e9e6,#343e40);--ah-ink:light-dark(#38685d,#9cd6b8);--ah-center:light-dark(#f1f3ee,#242e2e);color:var(--ah-fg);background:var(--ah-bg);border-radius:24px;padding:26px;max-width:460px;margin:0 auto;min-height:350px;font-family:system-ui,sans-serif;box-sizing:border-box;}
+#aether-hold-preview header {display:flex;align-items:center;justify-content:space-between;gap:12px;}
+#aether-hold-preview .ah-brand {letter-spacing:.13em;font-size:17px;font-weight:500;}
+#aether-hold-preview .ah-meta {font-size:11px;color:var(--ah-soft);}
+#aether-hold-preview .ah-heading {display:flex;align-items:center;justify-content:space-between;margin:26px 0 24px;gap:12px;}
+#aether-hold-preview h2 {font-size:26px;line-height:1.2;margin:0;font-weight:500;}
+#aether-hold-preview .ah-count {font-size:13px;color:var(--ah-soft);}
+#aether-hold-preview .ah-habits {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+#aether-hold-preview .ah-habit {display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;min-width:0;}
+#aether-hold-preview .ah-hold {--progress:0deg;position:relative;width:96px;height:96px;flex-shrink:0;border:0;border-radius:50%;background:conic-gradient(var(--ah-ink) var(--progress),var(--ah-track) 0deg);color:var(--ah-ink);display:grid;place-items:center;padding:7px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;}
+#aether-hold-preview .ah-hold::before {content:"";position:absolute;inset:7px;background:var(--ah-center);border-radius:50%;}
+#aether-hold-preview .ah-hold > * {position:relative;z-index:1;}
+#aether-hold-preview .ah-hold svg {width:27px;height:27px;}
+#aether-hold-preview .ah-hold.is-done::before {background:var(--ah-ink);}
+#aether-hold-preview .ah-hold.is-done {color:var(--ah-bg);}
+#aether-hold-preview .ah-label {font-size:14px;font-weight:500;}
+#aether-hold-preview .ah-status {font-size:12px;color:var(--ah-soft);margin-top:4px;}
+#aether-hold-preview footer {font-size:12px;color:var(--ah-soft);text-align:center;margin-top:30px;}
+#aether-hold-preview .ah-rows .ah-habits {grid-template-columns:1fr;gap:14px;}
+#aether-hold-preview .ah-rows .ah-habit {flex-direction:row;text-align:left;gap:16px;}
+#aether-hold-preview .ah-rows .ah-hold {width:60px;height:60px;padding:5px;}
+#aether-hold-preview .ah-rows .ah-hold::before {inset:5px;}
+#aether-hold-preview .ah-rows .ah-hold svg {width:22px;height:22px;}
+@media(max-width:380px) {#aether-hold-preview .ah-app {padding:20px 14px;}#aether-hold-preview .ah-hold {width:76px;height:76px;}#aether-hold-preview .ah-habits {gap:10px;}}
+</style>
+<script>
+(() => {
+  const root = document.getElementById('aether-hold-preview');
+  const habits = [{id:'read',name:'Read',icon:'book-open'},{id:'walk',name:'Walk',icon:'footprints'},{id:'stretch',name:'Stretch',icon:'accessibility'}];
+  const settings = {holdSeconds:0.9};
+  let done = new Set();
+  const interactions = [];
+  function applySaved(state) {
+    const saved = state?.privateContent?.completed;
+    if (Array.isArray(saved)) done = new Set(saved.filter(id => habits.some(h => h.id === id)));
+  }
+  applySaved(window.openai?.widgetState);
+  function render() {
+    root.querySelectorAll('.ah-count').forEach(node => node.textContent = `${done.size} of ${habits.length} complete`);
+    for (const entry of interactions) {
+      const complete = done.has(entry.habit.id);
+      entry.button.classList.toggle('is-done', complete);
+      entry.button.style.setProperty('--progress', complete ? '360deg' : '0deg');
+      entry.button.setAttribute('aria-pressed', String(complete));
+      entry.button.setAttribute('aria-label', `${complete ? 'Undo' : 'Complete'} ${entry.habit.name}`);
+      entry.status.textContent = complete ? 'Done today' : 'Not yet';
+      entry.symbol.hidden = complete;
+      entry.check.hidden = !complete;
+    }
+  }
+  function save() {
+    const snapshot = {modelContent:{previewCompletedHabits:habits.filter(h => done.has(h.id)).map(h => h.name)},privateContent:{completed:[...done]}};
+    window.openai?.setWidgetState?.(snapshot)?.catch(() => {});
+  }
+  for (const container of root.querySelectorAll('.ah-habits')) {
+    for (const habit of habits) {
+      const tile = document.createElement('div');tile.className='ah-habit';
+      tile.innerHTML = `<button type="button" class="ah-hold cursor-interaction"><span class="ah-symbol"><i data-lucide="${habit.icon}" aria-hidden="true"></i></span><span class="ah-check" hidden aria-hidden="true">✓</span></button><div><div class="ah-label">${habit.name}</div><div class="ah-status"></div></div>`;
+      container.appendChild(tile);
+      const entry = {habit,button:tile.querySelector('button'),status:tile.querySelector('.ah-status'),symbol:tile.querySelector('.ah-symbol'),check:tile.querySelector('.ah-check')};
+      interactions.push(entry);
+      let frame = 0, holding = false, pointer = null, started = 0;
+      const stop = () => {holding=false;cancelAnimationFrame(frame);entry.button.style.setProperty('--progress',done.has(habit.id)?'360deg':'0deg');};
+      const toggle = () => {stop();if(done.has(habit.id))done.delete(habit.id);else done.add(habit.id);render();save();};
+      const tick = now => {
+        if (!holding) return;
+        const amount = Math.min(1,(now-started)/(settings.holdSeconds*1000));
+        entry.button.style.setProperty('--progress',`${amount*360}deg`);
+        if(amount >= 1){done.add(habit.id);stop();render();save();}else frame=requestAnimationFrame(tick);
+      };
+      entry.button.addEventListener('pointerdown',event => {
+        if(!event.isPrimary || event.button!==0)return;
+        event.preventDefault();
+        if(done.has(habit.id)){toggle();return;}
+        pointer=event.pointerId;entry.button.setPointerCapture(pointer);holding=true;started=performance.now();frame=requestAnimationFrame(tick);
+      });
+      entry.button.addEventListener('pointermove',event => {
+        if(!holding || event.pointerId!==pointer)return;
+        const box=entry.button.getBoundingClientRect();
+        if(event.clientX<box.left || event.clientX>box.right || event.clientY<box.top || event.clientY>box.bottom)stop();
+      });
+      for(const event of ['pointerup','pointercancel','lostpointercapture','blur'])entry.button.addEventListener(event,stop);
+      entry.button.addEventListener('contextmenu',event => event.preventDefault());
+      entry.button.addEventListener('click',event => {if(event.detail===0)toggle();});
+    }
+  }
+  render();
+  globalThis.lucide?.createIcons({attrs:{width:24,height:24}});
+  window.addEventListener('openai:set_globals',event => {const state=event.detail?.globals?.widgetState;if(state){applySaved(state);render();}});
+  if(globalThis.Tweak){const tweak=new Tweak({container:root,onChange:()=>{}});tweak.addSlider(settings,'holdSeconds',{label:'Hold duration',min:0.5,max:1.5,step:0.1,unit:'seconds'});}
+})();
+</script>

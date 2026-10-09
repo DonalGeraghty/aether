@@ -9,6 +9,7 @@
     "build": "vite build && npm run verify:bundle",
     "check": "npm run lint && npm test",
     "icons": "node scripts/generate-icons.mjs",
+    "icons:habits": "node scripts/generate-habit-icons.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "node --test",
@@ -18,6 +19,7 @@
     "node": "^24.18.0"
   },
   "dependencies": {
+    "lucide-react": "^1.54.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },

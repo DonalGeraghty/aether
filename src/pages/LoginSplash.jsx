@@ -39,8 +39,8 @@ export default function LoginSplash() {
         <div className="auth-intro">
           <Brand />
           <div>
-            <p className="eyebrow">Home training · remembered</p>
-            <h1>Return to<br />the work.</h1>
+            <p className="eyebrow">Small actions · remembered</p>
+            <h1>Return to<br />the rhythm.</h1>
             <p>Use the same account you use with Nyx. Your identity is securely handled by Janus.</p>
           </div>
         </div>
@@ -49,7 +49,7 @@ export default function LoginSplash() {
           <div className="auth-panel-heading">
             <p className="eyebrow">Member access</p>
             <h2>{mode === 'login' ? 'Welcome back.' : 'Create your account.'}</h2>
-            <p>{mode === 'login' ? 'Sign in to open your training log.' : 'One account for Aether and Nyx.'}</p>
+            <p>{mode === 'login' ? 'Sign in to return to your habits.' : 'One account for Aether, Nyx, and Minerva.'}</p>
           </div>
 
           <div className="auth-tabs" role="tablist" aria-label="Account action">
@@ -59,7 +59,7 @@ export default function LoginSplash() {
 
           {import.meta.env.DEV && (
             <button className="demo-login-button" type="button" onClick={loginAsDemo}>
-              <span><strong>Explore demo</strong><small>Preloaded training data · no account needed</small></span>
+              <span><strong>Explore demo</strong><small>Sample habits · no account needed</small></span>
               <Icon name="arrow" size={18} />
             </button>
           )}
