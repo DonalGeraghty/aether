@@ -18,8 +18,8 @@ export default function HabitHoldButton({ habit, completed, disabled, onComplete
     fillTextColor={luminance > 0.179 ? '#080808' : '#f3f3f1'} radius={14} size="lg"
     holdTime={900} releaseTime={200} resetAfter={0} wave glow
     icon={<Icon name={habit.icon} size={21} />} doneIcon={<Icon name="check" size={21} />}
-    doneLabel={saving ? 'Saving…' : 'Completed'} ariaLabel={`${completed ? 'Undo' : 'Complete'} ${habit.name}`}
+    doneLabel={saving ? 'Saving…' : <><span className="habit-hold-label-full">Completed</span><span className="habit-hold-label-compact">Done</span></>} ariaLabel={`${completed ? 'Undo' : 'Complete'} ${habit.name}`}
     onHold={() => commit(true)} onTap={() => { if (completed) return commit(false) }}>
-    Hold to complete
+    <span className="habit-hold-label-full">Hold to complete</span><span className="habit-hold-label-compact">Hold</span>
   </HoldButton>
 }
