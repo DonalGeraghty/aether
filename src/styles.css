@@ -20,7 +20,9 @@
 .habit-hold-button { width: 100%; min-width: 0; margin: 0 auto 1.1rem; padding: 0 16px; font-size: 14px; }
 .habit-hold-button[data-phase='saving'] { cursor: wait; }
 .habit-tile h3 { font-size: .9rem; font-weight: 500; margin: 0; overflow-wrap: anywhere; }
-.habit-tile > p { color: var(--muted); font-size: .7rem; }
+.habit-tile-info > p { color: var(--muted); font-size: .7rem; }
+.habit-tile-actions { display: flex; align-items: center; justify-content: center; }
+.habit-mobile-menu,.habit-today-mobile-filters,.habit-hold-label-compact { display: none; }
 .habit-tile .text-button { font-size: .7rem; margin: 0 .3rem; }
 .habit-management-list { border-top: 1px solid var(--line); }
 .habit-management-row { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; gap: 1rem; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
@@ -494,3 +496,45 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 }
 
 @media(max-width:540px) { .habit-grid { grid-template-columns: 1fr; } }
+
+@media(max-width:720px) {
+  .habit-today-page .habit-hero { padding: 1.8rem 0 1rem; }
+  .habit-today-page .habit-hero .eyebrow { margin-bottom: .5rem; font-size: .7rem; }
+  .habit-today-page .habit-hero h1 { font-size: clamp(1.7rem, 7.2vw, 2.2rem); line-height: 1.1; letter-spacing: -.06em; }
+  .habit-today-page .habit-hero > p:last-child { margin-top: .5rem; font-size: .78rem; line-height: 1.5; }
+  .habit-today-page .habit-toolbar { margin-bottom: .5rem; gap: .75rem; }
+  .habit-today-page .habit-toolbar .eyebrow { margin: 0; font-size: .7rem; }
+  .habit-today-page .habit-toolbar .primary-button { min-height: 44px; padding: .55rem .8rem; font-size: .72rem; }
+  .habit-today-desktop-filters { display: none; }
+  .habit-today-mobile-filters { display: block; margin-bottom: .75rem; border-bottom: 1px solid var(--line); }
+  .habit-today-mobile-filters > summary { display: flex; align-items: center; justify-content: space-between; min-height: 44px; color: var(--soft); font-size: .75rem; cursor: pointer; }
+  .habit-today-mobile-filters > summary > span { color: var(--muted); font-size: .7rem; }
+  .habit-today-mobile-filters > summary::after { content: '+'; margin-left: .5rem; }
+  .habit-today-mobile-filters[open] > summary::after { content: '−'; }
+  .habit-today-mobile-filters .habit-filters { margin: .5rem 0 .9rem; max-width: none; }
+  .habit-today-page .habit-group { margin: 1rem 0; padding-top: .75rem; }
+  .habit-today-page .habit-group .section-title { margin-bottom: .55rem; }
+  .habit-today-page .habit-group .section-title h2 { font-size: .95rem; }
+  .habit-today-page .habit-group .section-title .eyebrow { margin: 0; font-size: .7rem; }
+  .habit-today-page .habit-grid { grid-template-columns: 1fr; gap: .5rem; }
+  .habit-today-page .habit-tile { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 106px 44px; align-items: center; column-gap: .4rem; min-height: 76px; padding: .6rem .55rem .6rem .8rem; border: 1px solid var(--line); border-radius: .75rem; background: #0b0b0b; text-align: left; }
+  .habit-today-page .habit-tile.is-complete { border-color: #333930; }
+  .habit-today-page .habit-tile-info { grid-row: 1; grid-column: 1; min-width: 0; }
+  .habit-today-page .habit-tile-info h3 { font-size: .85rem; line-height: 1.35; }
+  .habit-today-page .habit-tile-info > p { margin: .3rem 0 0; color: var(--muted); font-size: .72rem; }
+  .habit-today-page .habit-tile-status { display: none; }
+  .habit-today-page .habit-hold-button { grid-row: 1; grid-column: 2; height: 44px; margin: 0; padding: 0 10px; font-size: .75rem; }
+  .habit-today-page .habit-hold-button .hold-button__icon > svg { width: 18px; height: 18px; }
+  .habit-today-page .habit-hold-label-full { display: none; }
+  .habit-today-page .habit-hold-label-compact { display: inline; }
+  .habit-today-page .habit-tile-actions { display: none; }
+  .habit-today-page .habit-mobile-menu { display: block; grid-row: 1; grid-column: 3; position: relative; }
+  .habit-mobile-menu > summary { display: grid; place-items: center; width: 44px; height: 44px; border-radius: .4rem; color: var(--soft); cursor: pointer; list-style: none; font-size: 1.3rem; }
+  .habit-mobile-menu > summary::-webkit-details-marker,.habit-today-mobile-filters > summary::-webkit-details-marker { display: none; }
+  .habit-mobile-menu > summary::marker { content: ''; }
+  .habit-mobile-menu[open] > summary { background: #1a1a1a; color: var(--text); }
+  .habit-mobile-menu-items { position: absolute; top: calc(100% + .3rem); right: 0; z-index: 10; display: grid; min-width: 10rem; padding: .3rem; border: 1px solid #353535; border-radius: .6rem; background: #151515; box-shadow: 0 .75rem 2rem #000; }
+  .habit-mobile-menu-items button { min-height: 44px; padding: .6rem .8rem; border: 0; border-radius: .35rem; background: transparent; color: var(--soft); text-align: left; font-size: .78rem; cursor: pointer; }
+  .habit-mobile-menu-items button:hover,.habit-mobile-menu-items button:focus-visible { color: var(--text); background: #242424; }
+  .habit-today-page .habit-tile > .habit-note { grid-column: 1 / -1; margin-top: .8rem; padding-top: .75rem; border-top: 1px solid var(--line); }
+}

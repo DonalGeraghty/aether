@@ -107,19 +107,39 @@ export default function HabitTracker({ page, store, onPage, demo, onUnauthorized
   const due = filtered.filter((habit) => isDue(habit, today))
   const completeCount = due.filter((habit) => checkins[checkinKey(habit.id, today)]?.completed).length
   const groups = [...state.groups, { id: null, name: 'Anytime' }]
+  const viewHabitHistory = (habit) => {
+    setSelectedHabit(habit.id); setMonth(today.slice(0, 7)); setSelectedDate(today); onPage('calendar')
+  }
+  const closeHabitMenu = (event) => {
+    const menu = event.currentTarget.closest('details')
+    if (menu) { menu.open = false; menu.querySelector('summary')?.focus() }
+  }
 
-  return <main className="page habit-page"><Brand onPlan={() => onPage('today')} />
+  return <main className={`page habit-page${page === 'today' ? ' habit-today-page' : ''}`}><Brand onPlan={() => onPage('today')} />
     <section className="content-hero habit-hero"><p className="eyebrow">{page === 'today' ? new Date(`${today}T12:00:00Z`).toLocaleDateString('en-IE', { weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC' }) : page === 'assistant' ? 'Intentions into routines' : 'Small actions · steady progress'}</p>
       <h1>{page === 'today' ? 'One day at a time.' : page === 'habits' ? 'Your habits.' : page === 'calendar' ? 'The bigger picture.' : 'Make room for good.'}</h1>
       <p>{page === 'today' ? 'A little each day. Hold a button to mark it done.' : page === 'habits' ? 'Build routines that fit your life. Arrange them your way.' : page === 'calendar' ? 'See what you did, and where to begin again.' : 'Describe a routine or a goal. Review the habits before adding them.'}</p>
     </section>
     {notice && <p className="habit-error" role="alert">{notice}</p>}
     {loading ? <section className="empty-state" role="status"><h2>Loading your habits.</h2></section> : <>
-      {page === 'today' && <><div className="habit-toolbar"><span className="eyebrow" role="status">{completeCount} / {due.length} complete</span><button type="button" className="primary-button" onClick={() => setEditor({})}>New habit <Icon name="arrow" size={18} /></button></div><Filters state={state} filter={filter} onChange={setFilter} />
+      {page === 'today' && <><div className="habit-toolbar"><span className="eyebrow" role="status">{completeCount} / {due.length} complete</span><button type="button" className="primary-button" onClick={() => setEditor({})}>New habit <Icon name="arrow" size={18} /></button></div>
+        <div className="habit-today-desktop-filters"><Filters state={state} filter={filter} onChange={setFilter} /></div>
+        <details className="habit-today-mobile-filters"><summary>Filters <span>{filter.category || filter.group ? `${Number(Boolean(filter.category)) + Number(Boolean(filter.group))} active` : 'All habits'}</span></summary><Filters state={state} filter={filter} onChange={setFilter} /></details>
         {!due.length && <section className="empty-state"><h2>{state.habits.length ? 'Nothing scheduled here today.' : 'Start with something small.'}</h2><p>{state.habits.length ? 'Change your filters or enjoy your day off.' : 'Create a habit yourself, or ask Aether to help.'}</p><button className="text-button" type="button" onClick={() => onPage('assistant')}>Create with AI →</button></section>}
         {groups.map((group) => { const habits = due.filter((habit) => habit.group_id === group.id); return habits.length > 0 && <section className="habit-group" key={group.id || 'anytime'}><div className="section-title"><h2>{group.name}</h2><span className="eyebrow">{habits.length} habits</span></div><div className="habit-grid">{habits.map((habit) => {
           const entry = checkins[checkinKey(habit.id, today)], stats = state.stats[habit.id] || {}
-          return <article key={habit.id} className="habit-tile"><HabitHoldButton habit={habit} completed={Boolean(entry?.completed)} disabled={busy} onComplete={(completed) => saveCheckin(habit, today, completed)} /><h3>{habit.name}</h3><p>{stats.current || 0} streak · {entry?.completed ? 'Done today' : 'Not yet'}</p><button type="button" className="text-button" onClick={() => { setSelectedHabit(habit.id); setMonth(today.slice(0, 7)); setSelectedDate(today); onPage('calendar') }}>View history</button><button className="text-button" type="button" onClick={() => setExpanded(expanded === habit.id ? '' : habit.id)}>Note</button>{expanded === habit.id && <CheckinNote key={`${habit.id}-${entry?.note || ''}`} habit={habit} date={today} checkin={entry} busy={busy} save={saveCheckin} />}</article>
+          return <article key={habit.id} className={`habit-tile${entry?.completed ? ' is-complete' : ''}`}>
+            <HabitHoldButton habit={habit} completed={Boolean(entry?.completed)} disabled={busy} onComplete={(completed) => saveCheckin(habit, today, completed)} />
+            <div className="habit-tile-info"><h3>{habit.name}</h3><p>{stats.current || 0} streak<span className="habit-tile-status"> · {entry?.completed ? 'Done today' : 'Not yet'}</span></p></div>
+            <div className="habit-tile-actions"><button type="button" className="text-button" onClick={() => viewHabitHistory(habit)}>View history</button><button className="text-button" type="button" onClick={() => setExpanded(expanded === habit.id ? '' : habit.id)}>Note</button></div>
+            <details className="habit-mobile-menu" name="today-habit-actions"
+              onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) event.currentTarget.open = false }}
+              onKeyDown={(event) => { if (event.key === 'Escape') { event.preventDefault(); event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus() } }}>
+              <summary aria-label={`More actions for ${habit.name}`}><span aria-hidden="true">⋯</span></summary>
+              <div className="habit-mobile-menu-items"><button type="button" onClick={(event) => { closeHabitMenu(event); viewHabitHistory(habit) }}>View history</button><button type="button" onClick={(event) => { closeHabitMenu(event); setExpanded(expanded === habit.id ? '' : habit.id) }}>{expanded === habit.id ? 'Close note' : 'Add a note'}</button></div>
+            </details>
+            {expanded === habit.id && <CheckinNote key={`${habit.id}-${entry?.note || ''}`} habit={habit} date={today} checkin={entry} busy={busy} save={saveCheckin} />}
+          </article>
         })}</div></section> })}
         <p className="habit-help">Days follow {state.timezone}. Unscheduled days do not break your streak. Keyboard: focus a button, then hold Enter or Space. Select a completed button to undo.</p>
       </>}
